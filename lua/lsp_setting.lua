@@ -1,6 +1,6 @@
 vim.g.completion_chain_complete_list = {
   default = {
-    { complete_items = { 'lsp' , 'buffer' } },
+    { complete_items = { 'lsp' , 'buffer', 'path' } },
     { mode = { '<c-p>' } },
     { mode = { '<c-n>' } }
   },
@@ -17,3 +17,8 @@ local servers = { "lua", "rust" }
 for _, lsp in ipairs(servers) do
   require ("lang."..lsp)
 end
+
+vim.cmd([[autocmd BufEnter * lua require'completion'.on_attach({
+    sorting = 'alphabet',
+    matching_strategy_list = {'exact', 'fuzzy'},
+})]])
