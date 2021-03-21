@@ -13,7 +13,7 @@ vim.api.nvim_exec([[
     sign define LspDiagnosticsSignHint text=🠒 texthl=LspDiagnosticsDefaultHint linehl= numhl=  
 ]], true)
 
-local servers = { "lua", "rust" }
+local servers = { "lua", "rust", "haskell" }
 for _, lsp in ipairs(servers) do
   require ("lang."..lsp)
 end
