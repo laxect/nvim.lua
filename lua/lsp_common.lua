@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 function OnAttach(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
