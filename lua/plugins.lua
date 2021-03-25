@@ -19,7 +19,6 @@ vim.api.nvim_exec([[
   " nvim lsp
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
-  Plug 'steelsojka/completion-buffers'
   " fzf
   Plug '/bin/fzf'
   Plug 'junegunn/fzf.vim'
