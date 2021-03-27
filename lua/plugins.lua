@@ -28,5 +28,7 @@ vim.api.nvim_exec([[
   Plug 'nathangrigg/vim-beancount'
   " tree-sitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  " search
+  Plug 'jremmen/vim-ripgrep'
   call plug#end()
 ]], true);
