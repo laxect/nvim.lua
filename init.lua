@@ -39,7 +39,7 @@ opt('b', 'shiftwidth', 4)
 opt('b', 'expandtab', true)
 opt('o', 'termguicolors', true)
 -- block on https://github.com/neovim/neovim/pull/12378
-vim.cmd('autocmd FileType yaml,haskell,lua set tabstop=2 | set shiftwidth=2')
+vim.cmd('autocmd FileType yaml,haskell,lua,javascript set tabstop=2 | set shiftwidth=2')
 -- completion
 opt('o', 'completeopt', 'menuone,noinsert,noselect')
 opt('o', 'shortmess', 'filnxtToOFc')
