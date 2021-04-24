@@ -18,7 +18,4 @@ for _, lsp in ipairs(servers) do
   require ("lang."..lsp)
 end
 
-vim.cmd([[autocmd BufEnter * lua require'completion'.on_attach({
-    sorting = 'alphabet',
-    matching_strategy_list = {'exact', 'fuzzy'},
-})]])
+vim.cmd([[autocmd BufEnter * lua require'completion'.on_attach({ sorting = 'alphabet', matching_strategy_list = {'exact', 'fuzzy'} })]])
