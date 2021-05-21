@@ -1,3 +1,8 @@
-call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-call rpcnotify(1, 'Gui', 'Font', 'Sarasa Term J')
-let g:GuiInternalClipboard = 1
+if exists(':GuiFont')
+    " Use GuiFont! to ignore font errors
+    GuiFont! Sarasa Term J:h12
+endif
+
+if exists(':GuiTabline')
+    GuiTabline 0
+endif
