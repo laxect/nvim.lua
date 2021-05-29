@@ -1,11 +1,4 @@
 -- # utils
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
-
-local function opt(scope, key, value)
-  scopes[scope][key] = value
-  if scope ~= 'o' then scopes['o'][key] = value end
-end
-
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
@@ -22,27 +15,27 @@ end
 
 -- # options
 -- backup and swap
-opt('o', 'backup', false)
-opt('o', 'directory', '/dev/shm')
-opt('o', 'hidden', true)
+vim.opt.backup = false
+vim.opt.directory = '/dev/shm'
+vim.opt.hidden = true
 -- line number
-opt('w', 'number', true)
-opt('w', 'relativenumber', true)
-opt('w', 'cursorline', true)
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
 -- mouse on
 -- a for all
 -- r for for |hit-enter| and |more-prompt|
-opt('o', 'mouse', 'ar')
+vim.opt.mouse = 'ar'
 -- tabs
-opt('b', 'tabstop', 4)
-opt('b', 'shiftwidth', 4)
-opt('b', 'expandtab', true)
-opt('o', 'termguicolors', true)
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.termguicolors = true
+-- completion
+vim.opt.completeopt = 'menuone,noinsert,noselect'
+vim.opt.shortmess = 'filnxtToOFc'
 -- block on https://github.com/neovim/neovim/pull/12378
 vim.cmd('autocmd FileType yaml,haskell,lua,javascript set tabstop=2 | set shiftwidth=2')
--- completion
-opt('o', 'completeopt', 'menuone,noinsert,noselect')
-opt('o', 'shortmess', 'filnxtToOFc')
 
 -- # plugins
 require('plugins')
