@@ -24,8 +24,6 @@ vim.api.nvim_exec([[
   Plug 'junegunn/fzf.vim'
   " X
   Plug 'peitalin/vim-jsx-typescript'
-  " Beancount
-  Plug 'nathangrigg/vim-beancount'
   " tree-sitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   " search

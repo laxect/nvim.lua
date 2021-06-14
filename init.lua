@@ -44,8 +44,6 @@ vim.cmd('hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred gu
 vim.cmd('colorscheme onehalflight')
 
 -- # plugin config
--- Bean count
-b('beancount_root', '/home/gyara/Documents/ShimaCount/main.bean')
 
 -- Airline
 g('airline_powerline_fonts', 1)
