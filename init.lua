@@ -32,6 +32,7 @@ vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.shortmess = 'filnxtToOFc'
 -- block on https://github.com/neovim/neovim/pull/12378
 vim.cmd('autocmd FileType yaml,haskell,lua,javascript set tabstop=2 | set shiftwidth=2')
+vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 
 -- # plugins
 require('plugins')
