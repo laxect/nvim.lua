@@ -1,32 +1,36 @@
-vim.api.nvim_exec([[
-  call plug#begin('~/.local/share/nvim/plugged')
-  " auto pair backet
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'tpope/vim-surround'
-  " airline
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  " comment and uncomment
-  Plug 'scrooloose/nerdcommenter'
-  " git plug
-  Plug 'tpope/vim-fugitive'
-  " Tree look
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'  }
-  " themes
-  Plug 'sonph/onehalf', {'rtp': 'vim'}
-  " html emmt
-  Plug 'mattn/emmet-vim'
-  " nvim lsp
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/completion-nvim'
-  " fzf
-  Plug '/bin/fzf'
-  Plug 'junegunn/fzf.vim'
-  " X
-  Plug 'peitalin/vim-jsx-typescript'
-  " tree-sitter
-  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  " search
-  Plug 'jremmen/vim-ripgrep'
-  call plug#end()
-]], true);
+return require('packer').startup({function(use)
+  -- auto pair backet
+  use 'jiangmiao/auto-pairs'
+  use 'tpope/vim-surround'
+  -- airline
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
+  -- comment and uncomment
+  use 'scrooloose/nerdcommenter'
+  -- git plug
+  use 'tpope/vim-fugitive'
+  -- Tree look
+  use {'scrooloose/nerdtree', opt = true, cmd = 'NERDTreeToggle'}
+  -- themes
+  use ({'sonph/onehalf', rtp = 'vim', config = function () vim.cmd('colorscheme onehalflight') end})
+  -- html emmt
+  use 'mattn/emmet-vim'
+  -- nvim lsp
+  use 'neovim/nvim-lspconfig'
+  use 'nvim-lua/completion-nvim'
+  -- fzf
+  use 'junegunn/fzf.vim'
+  -- X
+  use 'peitalin/vim-jsx-typescript'
+  -- tree-sitter
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  -- search
+  use 'jremmen/vim-ripgrep'
+  end,
+  config = {
+    debug = true,
+    display = {
+      open_fn = require('packer.util').float,
+    }
+  }
+})

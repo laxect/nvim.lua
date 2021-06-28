@@ -9,10 +9,6 @@ local function g(key, val)
   vim.api.nvim_set_var(key, val)
 end
 
-local function b(key, val)
-  vim.api.nvim_buf_set_var(0, key, val)
-end
-
 -- # options
 -- backup and swap
 vim.opt.backup = false
@@ -41,7 +37,6 @@ vim.cmd('autocmd FileType yaml,haskell,lua,javascript set tabstop=2 | set shiftw
 require('plugins')
 
 vim.cmd('hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white')
-vim.cmd('colorscheme onehalflight')
 
 -- # plugin config
 
