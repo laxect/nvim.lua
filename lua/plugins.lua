@@ -1,19 +1,26 @@
 return require('packer').startup({function(use)
+  -- themes
+  use {'sonph/onehalf', rtp = 'vim'}
+  use 'sainnhe/edge'
+  use 'Th3Whit3Wolf/one-nvim'
+  use 'marko-cerovac/material.nvim'
+  use 'Shatur/neovim-ayu'
+
   -- auto pair backet
   use 'jiangmiao/auto-pairs'
   use 'tpope/vim-surround'
   -- airline
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
+  use ({
+    'vim-airline/vim-airline',
+    requires = {'vim-airline/vim-airline-themes', opt = true},
+    setup = require('plugin/airline'),
+  })
   -- comment and uncomment
   use 'scrooloose/nerdcommenter'
   -- git plug
   use 'tpope/vim-fugitive'
   -- Tree look
   use {'scrooloose/nerdtree', opt = true, cmd = 'NERDTreeToggle'}
-  -- themes
-  use {'sonph/onehalf', rtp = 'vim'}
-  use {'Th3Whit3Wolf/one-nvim'}
 
   -- html emmt
   use 'mattn/emmet-vim'
@@ -28,7 +35,7 @@ return require('packer').startup({function(use)
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   end,
   config = {
-    debug = true,
+    debug = false,
     display = {
       open_fn = function()
       return require('packer.util').float({ border = 'none' })

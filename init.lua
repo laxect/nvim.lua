@@ -1,15 +1,6 @@
--- # utils
-local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-local function g(key, val)
-  vim.api.nvim_set_var(key, val)
-end
-
+local u = require('utils')
 -- # options
+vim.opt.background = 'light'
 -- backup and swap
 vim.opt.backup = false
 vim.opt.directory = '/dev/shm'
@@ -38,14 +29,9 @@ vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 require('plugins')
 
 vim.cmd('hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white')
-vim.cmd('colorscheme one-nvim')
+vim.cmd('colorscheme edge')
 
 -- # plugin config
-
--- Airline
-g('airline_powerline_fonts', 1)
-g('airline_theme', 'atomic')
-g('airline_extensions', {'tabline', 'branch'})
 
 -- treesitter
 require 'nvim-treesitter.configs'.setup {
@@ -69,22 +55,22 @@ require 'nvim-treesitter.configs'.setup {
 
 -- # key map
 -- buffer
-map('n', '<Leader>j', '<cmd>bp<cr>')
-map('n', '<Leader>k', '<cmd>bn<cr>')
+u.map('n', '<Leader>j', '<cmd>bp<cr>')
+u.map('n', '<Leader>k', '<cmd>bn<cr>')
 -- close highlighter
-map('n', '<Leader>n', '<cmd>nohl<cr>')
+u.map('n', '<Leader>n', '<cmd>nohl<cr>')
 -- terminal
-map('n', '<Leader>t', '<cmd>e term://zsh<cr>')
-map('t', '<Leader>c', '<C-\\><C-n><cr>')
+u.map('n', '<Leader>t', '<cmd>e term://zsh<cr>')
+u.map('t', '<Leader>c', '<C-\\><C-n><cr>')
 -- smart tab
-map('n', '<Leader>b', '<cmd>cclose<cr>')
-map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
-map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true})
-map('i', '<cr>', 'pumvisible() ? "\\<C-y>" : "\\<cr>"', {expr = true})
+u.map('n', '<Leader>b', '<cmd>cclose<cr>')
+u.map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+u.map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true})
+u.map('i', '<cr>', 'pumvisible() ? "\\<C-y>" : "\\<cr>"', {expr = true})
 
 -- # plugin key map
-map('n', '<Leader>o', '<cmd>FZF<cr>')
-map('n', '<Leader>s', '<cmd>Rg<cr>')
-map('n', '<Leader>pu', '<cmd>PackerSync<cr>')
+u.map('n', '<Leader>o', '<cmd>FZF<cr>')
+u.map('n', '<Leader>s', '<cmd>Rg<cr>')
+u.map('n', '<Leader>pu', '<cmd>PackerSync<cr>')
 
 require('lsp_setting')
