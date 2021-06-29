@@ -9,12 +9,14 @@ return require('packer').startup({function(use)
   -- auto pair backet
   use 'jiangmiao/auto-pairs'
   use 'tpope/vim-surround'
+
   -- airline
   use ({
     'vim-airline/vim-airline',
     requires = {'vim-airline/vim-airline-themes', opt = true},
     setup = require('plugin/airline'),
   })
+
   -- comment and uncomment
   use 'scrooloose/nerdcommenter'
   -- git plug
@@ -27,6 +29,7 @@ return require('packer').startup({function(use)
   -- nvim lsp
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/completion-nvim'
+  use ({'RishabhRD/nvim-lsputils', config = require('plugin/lsputils'), requires = {'RishabhRD/popfix'}})
   -- fzf
   use 'junegunn/fzf.vim'
   -- X
