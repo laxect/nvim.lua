@@ -81,6 +81,7 @@ map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true})
 map('i', '<cr>', 'pumvisible() ? "\\<C-y>" : "\\<cr>"', {expr = true})
 
--- # lsp config and key map
+-- # plugin key map
+map('n', '<Leader>o', '<cmd>FZF<cr>')
 
 require('lsp_setting')
