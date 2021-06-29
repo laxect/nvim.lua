@@ -12,7 +12,9 @@ return require('packer').startup({function(use)
   -- Tree look
   use {'scrooloose/nerdtree', opt = true, cmd = 'NERDTreeToggle'}
   -- themes
-  use ({'sonph/onehalf', rtp = 'vim', config = function () vim.cmd('colorscheme onehalflight') end})
+  use {'sonph/onehalf', rtp = 'vim'}
+  use {'Th3Whit3Wolf/one-nvim'}
+
   -- html emmt
   use 'mattn/emmet-vim'
   -- nvim lsp
@@ -24,13 +26,13 @@ return require('packer').startup({function(use)
   use 'peitalin/vim-jsx-typescript'
   -- tree-sitter
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  -- search
-  use 'jremmen/vim-ripgrep'
   end,
   config = {
     debug = true,
     display = {
-      open_fn = require('packer.util').float,
+      open_fn = function()
+      return require('packer.util').float({ border = 'none' })
+    end,
     }
   }
 })

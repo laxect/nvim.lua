@@ -38,6 +38,7 @@ vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 require('plugins')
 
 vim.cmd('hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white')
+vim.cmd('colorscheme one-nvim')
 
 -- # plugin config
 
@@ -83,5 +84,7 @@ map('i', '<cr>', 'pumvisible() ? "\\<C-y>" : "\\<cr>"', {expr = true})
 
 -- # plugin key map
 map('n', '<Leader>o', '<cmd>FZF<cr>')
+map('n', '<Leader>s', '<cmd>Rg<cr>')
+map('n', '<Leader>pu', '<cmd>PackerSync<cr>')
 
 require('lsp_setting')

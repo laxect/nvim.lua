@@ -106,8 +106,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gyara/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
+  ["one-nvim"] = {
+    loaded = true,
+    path = "/home/gyara/.local/share/nvim/site/pack/packer/start/one-nvim"
+  },
   onehalf = {
-    config = { "\27LJ\1\2<\0\0\2\0\3\0\0054\0\0\0007\0\1\0%\1\2\0>\0\2\1G\0\1\0\29colorscheme onehalflight\bcmd\bvim\0" },
     loaded = true,
     path = "/home/gyara/.local/share/nvim/site/pack/packer/start/onehalf/vim"
   },
@@ -127,10 +130,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gyara/.local/share/nvim/site/pack/packer/start/vim-jsx-typescript"
   },
-  ["vim-ripgrep"] = {
-    loaded = true,
-    path = "/home/gyara/.local/share/nvim/site/pack/packer/start/vim-ripgrep"
-  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/gyara/.local/share/nvim/site/pack/packer/start/vim-surround"
@@ -142,10 +141,6 @@ time([[Defining packer_plugins]], false)
 time([[Runtimepath customization]], true)
 vim.o.runtimepath = vim.o.runtimepath .. ",/home/gyara/.local/share/nvim/site/pack/packer/start/onehalf/vim"
 time([[Runtimepath customization]], false)
--- Config for: onehalf
-time([[Config for onehalf]], true)
-try_loadstring("\27LJ\1\2<\0\0\2\0\3\0\0054\0\0\0007\0\1\0%\1\2\0>\0\2\1G\0\1\0\29colorscheme onehalflight\bcmd\bvim\0", "config", "onehalf")
-time([[Config for onehalf]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
