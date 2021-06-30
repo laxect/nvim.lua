@@ -28,7 +28,8 @@ return require('packer').startup({function(use)
   use 'mattn/emmet-vim'
   -- nvim lsp
   use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
+  use 'hrsh7th/vim-vsnip'
+  use ({'hrsh7th/nvim-compe', config = require('plugin/nvim-compe')})
   use ({'RishabhRD/nvim-lsputils', config = require('plugin/lsputils'), requires = {'RishabhRD/popfix'}})
   -- fzf
   use 'junegunn/fzf.vim'

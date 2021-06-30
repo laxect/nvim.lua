@@ -62,11 +62,6 @@ u.map('n', '<Leader>n', '<cmd>nohl<cr>')
 -- terminal
 u.map('n', '<Leader>t', '<cmd>e term://zsh<cr>')
 u.map('t', '<Leader>c', '<C-\\><C-n><cr>')
--- smart tab
-u.map('n', '<Leader>b', '<cmd>cclose<cr>')
-u.map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
-u.map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true})
-u.map('i', '<cr>', 'pumvisible() ? "\\<C-y>" : "\\<cr>"', {expr = true})
 
 -- # plugin key map
 u.map('n', '<Leader>o', '<cmd>FZF<cr>')
