@@ -67,5 +67,6 @@ u.map('t', '<Leader>c', '<C-\\><C-n><cr>')
 u.map('n', '<Leader>o', '<cmd>FZF<cr>')
 u.map('n', '<Leader>s', '<cmd>Rg<cr>')
 u.map('n', '<Leader>pu', '<cmd>PackerSync<cr>')
+u.map('n', '<Leader>sv', '<cmd>source $MYVIMRC<cr>')
 
 require('lsp_setting')
