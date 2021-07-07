@@ -5,7 +5,7 @@ vim.api.nvim_exec([[
     sign define LspDiagnosticsSignHint text=🠒 texthl=LspDiagnosticsDefaultHint linehl= numhl=  
 ]], true)
 
-local servers = { "lua", "rust", "haskell", "js", "bash", "gdscript", "beancount" }
+local servers = { "lua", "rust", "js", "bash", "gdscript", "beancount", "clangd" }
 for _, lsp in ipairs(servers) do
   require ("lang."..lsp)
 end
