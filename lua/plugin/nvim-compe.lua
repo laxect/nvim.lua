@@ -57,7 +57,7 @@ local setup = function ()
 
   _G.enter_confirm = function()
     if vim.fn.pumvisible() == 1 then
-      return vim.fn['compe#confirm']('<CR>')
+      return vim.fn['compe#confirm']()
     else
       return t "<CR>"
     end
