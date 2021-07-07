@@ -30,7 +30,13 @@ return require('packer').startup({function(use)
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/vim-vsnip'
   use ({'hrsh7th/nvim-compe', config = require('plugin/nvim-compe')})
-  use ({'RishabhRD/nvim-lsputils', config = require('plugin/lsputils'), requires = {'RishabhRD/popfix'}})
+  use ({
+    'RishabhRD/nvim-lsputils',
+    config = require('plugin/lsputils').config,
+    setup = require('plugin/lsputils').setup,
+    requires = {'RishabhRD/popfix'}
+  })
+  use 'ray-x/lsp_signature.nvim'
   -- fzf
   use 'junegunn/fzf.vim'
   -- X
