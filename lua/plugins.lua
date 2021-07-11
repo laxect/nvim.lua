@@ -11,21 +11,27 @@ return require('packer').startup({
         use 'jiangmiao/auto-pairs'
         use 'tpope/vim-surround'
 
+        -- lines
+        use 'nvim-lua/plenary.nvim'
         use {
             'glepnir/galaxyline.nvim',
-            config = require('plugin/statusline').config(),
-            requires = {'kyazdani42/nvim-web-devicons', opt = true}
+            config = require('plugin/statusline').config,
+            requires = {
+                {'kyazdani42/nvim-web-devicons', opt = true}, {
+                    'lewis6991/gitsigns.nvim',
+                    event = 'BufRead',
+                    config = require('plugin/gitsigns').config
+                }
+            }
         }
 
         use {
             'akinsho/nvim-bufferline.lua',
-            config = require('plugin/bufferline').config()
+            config = require('plugin/bufferline').config
         }
 
         -- comment and uncomment
         use 'scrooloose/nerdcommenter'
-        -- git plug
-        use 'tpope/vim-fugitive'
         -- Tree look
         use {'scrooloose/nerdtree', opt = true, cmd = 'NERDTreeToggle'}
 

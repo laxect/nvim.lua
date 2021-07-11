@@ -55,7 +55,7 @@ M.config = function()
         DiffAdd = {
             provider = 'DiffAdd',
             condition = checkwidth,
-            icon = '  ',
+            icon = ' +',
             highlight = {colors.green, colors.white}
         }
     }
@@ -64,7 +64,7 @@ M.config = function()
         DiffModified = {
             provider = 'DiffModified',
             condition = checkwidth,
-            icon = '   ',
+            icon = '  *',
             highlight = {colors.cyan, colors.white}
         }
     }
@@ -73,7 +73,7 @@ M.config = function()
         DiffRemove = {
             provider = 'DiffRemove',
             condition = checkwidth,
-            icon = '  ',
+            icon = ' -',
             highlight = {colors.yellow, colors.white}
         }
     }
@@ -81,7 +81,7 @@ M.config = function()
     gls.left[8] = {
         DiagnosticError = {
             provider = 'DiagnosticError',
-            icon = '  ',
+            icon = ' x',
             highlight = {colors.red, colors.white}
         }
     }
@@ -89,7 +89,7 @@ M.config = function()
     gls.left[9] = {
         DiagnosticWarn = {
             provider = 'DiagnosticWarn',
-            icon = '  ',
+            icon = ' !',
             highlight = {colors.yellow, colors.statusline_bg}
         }
     }
