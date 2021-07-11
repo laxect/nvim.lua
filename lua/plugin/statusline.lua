@@ -39,7 +39,7 @@ M.config = function()
         current_dir = {
             provider = function()
                 local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-                return '  ' .. dir_name .. ' '
+                return ' ' .. dir_name .. ' '
             end,
             highlight = {colors.black, colors.white}
         }
@@ -177,6 +177,14 @@ M.config = function()
                 return '  ' .. result .. '% '
             end,
             highlight = {colors.white, colors.green}
+        }
+    }
+
+    gls.short_line_left[1] = {
+        FileName = {
+            provider = {'FileName'},
+            condition = condition.buffer_not_empty,
+            highlight = {colors.white, colors.black}
         }
     }
 end
