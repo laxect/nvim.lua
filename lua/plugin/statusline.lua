@@ -36,6 +36,18 @@ M.config = function()
     }
 
     gls.left[4] = {
+        Brand = {
+            provider = function() return '存在するということは、自分を创造することだ。' end,
+            condition = function()
+                return not condition.buffer_not_empty()
+            end,
+            highlight = {colors.white, colors.black},
+            separator = ' ',
+            separator_highlight = {colors.black, colors.white}
+        }
+    }
+
+    gls.left[5] = {
         current_dir = {
             provider = function()
                 local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
@@ -51,7 +63,7 @@ M.config = function()
         return false
     end
 
-    gls.left[5] = {
+    gls.left[6] = {
         DiffAdd = {
             provider = 'DiffAdd',
             condition = checkwidth,
@@ -60,7 +72,7 @@ M.config = function()
         }
     }
 
-    gls.left[6] = {
+    gls.left[7] = {
         DiffModified = {
             provider = 'DiffModified',
             condition = checkwidth,
@@ -69,7 +81,7 @@ M.config = function()
         }
     }
 
-    gls.left[7] = {
+    gls.left[8] = {
         DiffRemove = {
             provider = 'DiffRemove',
             condition = checkwidth,
@@ -78,7 +90,7 @@ M.config = function()
         }
     }
 
-    gls.left[8] = {
+    gls.left[9] = {
         DiagnosticError = {
             provider = 'DiagnosticError',
             icon = ' x',
@@ -86,7 +98,7 @@ M.config = function()
         }
     }
 
-    gls.left[9] = {
+    gls.left[10] = {
         DiagnosticWarn = {
             provider = 'DiagnosticWarn',
             icon = ' !',
