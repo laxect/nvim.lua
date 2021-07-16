@@ -107,6 +107,17 @@ M.config = function()
     }
 
     gls.right[1] = {
+        FileType = {
+            provider = function ()
+              local ft = vim.bo.filetype
+              return ft .. ' '
+            end,
+            condition = condition.buffer_not_empty,
+            highlight = {colors.red, colors.white}
+        }
+    }
+
+    gls.right[2] = {
         lsp_status = {
             provider = function()
                 local clients = vim.lsp.get_active_clients()
@@ -116,17 +127,6 @@ M.config = function()
                     return ''
                 end
             end,
-            highlight = {colors.black, colors.white}
-        }
-    }
-
-    gls.right[2] = {
-        FileType = {
-            provider = function ()
-              local ft = vim.bo.filetype
-              return ft .. ' '
-            end,
-            condition = condition.buffer_not_empty,
             highlight = {colors.black, colors.white}
         }
     }
