@@ -54,6 +54,8 @@ return require('packer').startup({
         use 'peitalin/vim-jsx-typescript'
         -- tree-sitter
         use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+        -- git
+        use 'tpope/vim-fugitive'
     end,
     config = {
         debug = false,

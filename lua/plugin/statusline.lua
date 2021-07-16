@@ -121,6 +121,17 @@ M.config = function()
     }
 
     gls.right[2] = {
+        FileType = {
+            provider = function ()
+              local ft = vim.bo.filetype
+              return ft .. ' '
+            end,
+            condition = condition.buffer_not_empty,
+            highlight = {colors.black, colors.white}
+        }
+    }
+
+    gls.right[3] = {
         GitIcon = {
             provider = function() return ' ' end,
             condition = condition.check_git_workspace,
@@ -128,7 +139,7 @@ M.config = function()
         }
     }
 
-    gls.right[3] = {
+    gls.right[4] = {
         GitBranch = {
             provider = 'GitBranch',
             condition = condition.check_git_workspace,
@@ -136,14 +147,14 @@ M.config = function()
         }
     }
 
-    gls.right[4] = {
+    gls.right[5] = {
         some_icon = {
             provider = function() return ' ' end,
             highlight = {colors.white, colors.red}
         }
     }
 
-    gls.right[5] = {
+    gls.right[6] = {
         ViMode = {
             provider = function()
                 local alias = {
@@ -167,14 +178,14 @@ M.config = function()
         }
     }
 
-    gls.right[6] = {
+    gls.right[7] = {
         some_icon2 = {
             provider = function() return '' end,
             highlight = {colors.red, colors.green}
         }
     }
 
-    gls.right[7] = {
+    gls.right[8] = {
         line_percentage = {
             provider = function()
                 local current_line = vim.fn.line('.')
