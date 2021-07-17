@@ -56,6 +56,11 @@ return require('packer').startup({
         use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
         -- git
         use 'tpope/vim-fugitive'
+        -- color
+        use({
+            'norcalli/nvim-colorizer.lua',
+            config = require('plugin/colorize').config
+        })
     end,
     config = {
         debug = false,

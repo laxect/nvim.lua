@@ -37,7 +37,10 @@ M.config = function()
 
     gls.left[4] = {
         Brand = {
-            provider = function() return '存在するということは、自分を创造することだ。' end,
+            provider = function()
+                return
+                    '存在するということは、自分を创造することだ。'
+            end,
             condition = function()
                 return not condition.buffer_not_empty()
             end,
@@ -108,9 +111,9 @@ M.config = function()
 
     gls.right[1] = {
         FileType = {
-            provider = function ()
-              local ft = vim.bo.filetype
-              return ft .. ' '
+            provider = function()
+                local ft = vim.bo.filetype
+                return ft .. ' '
             end,
             condition = condition.buffer_not_empty,
             highlight = {colors.red, colors.white}
