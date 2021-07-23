@@ -54,6 +54,7 @@ return require('packer').startup({
         use 'peitalin/vim-jsx-typescript'
         -- tree-sitter
         use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+        use 'terminalnode/sway-vim-syntax'
         -- git
         use 'tpope/vim-fugitive'
         -- color
