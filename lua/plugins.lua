@@ -55,6 +55,7 @@ return require('packer').startup({
         -- tree-sitter
         use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
         use 'terminalnode/sway-vim-syntax'
+        use 'nfnty/vim-nftables'
         -- git
         use 'tpope/vim-fugitive'
         -- color
