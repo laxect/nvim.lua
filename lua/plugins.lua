@@ -13,7 +13,7 @@ return require('packer').startup({
 
         -- lines
         use 'nvim-lua/plenary.nvim'
-        use ({
+        use({
             'glepnir/galaxyline.nvim',
             config = require('plugin/statusline').config,
             requires = {
@@ -25,15 +25,12 @@ return require('packer').startup({
             }
         })
 
-        use ({
+        use({
             'akinsho/nvim-bufferline.lua',
             config = require('plugin/bufferline').config
         })
 
-        use ({
-            'yggdroot/indentline',
-            setup = require('plugin/indentline').setup
-        })
+        use({'yggdroot/indentline', setup = require('plugin/indentline').setup})
 
         -- comment and uncomment
         use 'scrooloose/nerdcommenter'
@@ -53,6 +50,7 @@ return require('packer').startup({
             requires = {'RishabhRD/popfix'}
         })
         use 'ray-x/lsp_signature.nvim'
+        use 'hashivim/vim-packer'
         -- fzf
         use 'junegunn/fzf.vim'
         -- X
