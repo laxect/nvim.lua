@@ -14,7 +14,7 @@ local setup = function()
     cmp.setup {
         mapping = {
             -- smart tab
-            ['<Tab>'] = cmp.mapping(function(fallback)
+            ['<tab>'] = cmp.mapping(function(fallback)
                 if vim.fn.pumvisible() == 1 then
                     vim.fn.feedkeys(t('<C-n>'), 'n')
                 elseif check_back_space() then
@@ -25,7 +25,7 @@ local setup = function()
                     fallback()
                 end
             end, {'i', 's'}),
-            ['<S-tab>'] = cmp.mapping(function(fallback)
+            ['<s-tab>'] = cmp.mapping(function(fallback)
                 if vim.fn.pumvisible() == 1 then
                     vim.fn.feedkeys(t('<C-p>'), 'n')
                 else
@@ -36,7 +36,7 @@ local setup = function()
             ['<c-f>'] = cmp.mapping.scroll_docs(4),
             ['<cr>'] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,
-                select = true
+                select = false
             })
         },
 
