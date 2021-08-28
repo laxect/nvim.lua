@@ -5,7 +5,7 @@ function OnAttach(client, bufnr)
     end
 
     -- other plugin
-    require("plugin/lsp_signature").setup()
+    require('plugin/lsp_signature').setup()
 
     -- Mappings.
     local opts = {noremap = true, silent = true}
@@ -39,9 +39,12 @@ function OnAttach(client, bufnr)
                    opts)
 
     -- Set some keybinds conditional on server capabilities
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>",
+    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>',
                    opts)
 
 end
 
-return {on_attach = OnAttach}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+return {on_attach = OnAttach, capabilities}

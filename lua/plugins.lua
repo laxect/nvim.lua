@@ -42,7 +42,13 @@ return require('packer').startup({
         -- nvim lsp
         use 'neovim/nvim-lspconfig'
         use 'hrsh7th/vim-vsnip'
-        use({'hrsh7th/nvim-compe', config = require('plugin/nvim-compe')})
+        use({
+            'hrsh7th/nvim-cmp',
+            config = require('plugin/nvim-cmp'),
+            requires = {
+                'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-path'
+            }
+        })
         use({
             'RishabhRD/nvim-lsputils',
             config = require('plugin/lsputils').config,

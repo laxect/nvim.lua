@@ -6,7 +6,7 @@ vim.api.nvim_exec([[
 ]], true)
 
 local servers = {
-    "lua", "rust", "js", "bash", "gdscript", "beancount", "clangd", "yaml",
-    "terraform", "python"
+    'lua', 'rust', 'js', 'bash', 'gdscript', 'beancount', 'clangd', 'yaml',
+    'terraform', 'python'
 }
-for _, lsp in ipairs(servers) do require("lang." .. lsp) end
+for _, lsp in ipairs(servers) do require('lang.' .. lsp) end
