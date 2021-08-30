@@ -12,9 +12,14 @@ local setup = function()
 
     local cmp = require('cmp')
     cmp.setup {
+        snippet = {
+            expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body)
+            end
+        },
         mapping = {
             -- smart tab
-            ['<tab>'] = cmp.mapping(function(fallback)
+            ['<Tab>'] = cmp.mapping(function(fallback)
                 if vim.fn.pumvisible() == 1 then
                     vim.fn.feedkeys(t('<C-n>'), 'n')
                 elseif check_back_space() then
@@ -25,23 +30,22 @@ local setup = function()
                     fallback()
                 end
             end, {'i', 's'}),
-            ['<s-tab>'] = cmp.mapping(function(fallback)
+            ['<s-Tab>'] = cmp.mapping(function(fallback)
                 if vim.fn.pumvisible() == 1 then
                     vim.fn.feedkeys(t('<C-p>'), 'n')
                 else
                     fallback()
                 end
             end, {'i', 's'}),
-            ['<c-d>'] = cmp.mapping.scroll_docs(-4),
-            ['<c-f>'] = cmp.mapping.scroll_docs(4),
-            ['<cr>'] = cmp.mapping.confirm({
+            ['<C-z>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-x>'] = cmp.mapping.scroll_docs(4),
+            ['<C-v>'] = cmp.mapping.complete(),
+            ['<CR>'] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,
-                select = false
+                select = true
             })
         },
-
         completion = {completeopt = 'menu,menuone,noinsert'},
-        -- you should specify your *installed* sources.
         sources = {{name = 'buffer'}, {name = 'nvim_lsp'}, {name = 'path'}}
     }
 end
