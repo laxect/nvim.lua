@@ -11,43 +11,46 @@ local setup = function()
     end
 
     local cmp = require('cmp')
-    cmp.setup {
+    cmp.setup ({
         snippet = {
             expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body)
+                require'luasnip'.lsp_expand(args.body)
             end
         },
         mapping = {
             -- smart tab
-            ['<Tab>'] = cmp.mapping(function(fallback)
+            ["<Tab>"] = cmp.mapping(function(fallback)
                 if vim.fn.pumvisible() == 1 then
-                    vim.fn.feedkeys(t('<C-n>'), 'n')
+                    vim.fn.feedkeys(t("<C-n>"), "n")
+                elseif luasnip.expand_or_jumpable() then
+                    vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
                 elseif check_back_space() then
-                    vim.fn.feedkeys(t('<Tab>'), 'n')
-                elseif vim.fn.call('vsnip#available', {1}) == 1 then
-                    vim.fn.feedkeys(t('<Plug>(vsnip-expand-or-jump)'), '')
+                    vim.fn.feedkeys(t("<Tab>"), "n")
                 else
                     fallback()
                 end
-            end, {'i', 's'}),
-            ['<s-Tab>'] = cmp.mapping(function(fallback)
+            end, {"i", "s"}),
+            ["<S-Tab>"] = cmp.mapping(function(fallback)
                 if vim.fn.pumvisible() == 1 then
-                    vim.fn.feedkeys(t('<C-p>'), 'n')
+                    vim.fn.feedkeys(t("<C-p>"), "n")
+                elseif luasnip.jumpable(-1) then
+                    vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
                 else
                     fallback()
                 end
-            end, {'i', 's'}),
-            ['<C-z>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-x>'] = cmp.mapping.scroll_docs(4),
-            ['<C-v>'] = cmp.mapping.complete(),
+            end, {"i", "s"}),
+            ['<C-d>'] = cmp.mapping.complete(),
             ['<CR>'] = cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Insert,
+                behavior = cmp.ConfirmBehavior.Replace,
                 select = true
             })
         },
         completion = {completeopt = 'menu,menuone,noinsert'},
-        sources = {{name = 'buffer'}, {name = 'nvim_lsp'}, {name = 'path'}}
-    }
+        sources = {
+            {name = 'luasnip'}, {name = 'buffer'}, {name = 'nvim_lsp'},
+            {name = 'path'}
+        }
+    })
 end
 
 return setup;
