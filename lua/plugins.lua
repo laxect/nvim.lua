@@ -1,4 +1,4 @@
-return require('packer').startup({
+require('packer').startup({
     function(use)
         -- themes
         use {'sonph/onehalf', rtp = 'vim'}
@@ -42,14 +42,11 @@ return require('packer').startup({
         -- nvim lsp
         use 'neovim/nvim-lspconfig'
         use 'L3MON4D3/LuaSnip'
-        use({
-            'hrsh7th/nvim-cmp',
-            config = require('plugin/nvim-cmp'),
-            requires = {
-                'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp',
-                'hrsh7th/cmp-path', 'saadparwaiz1/cmp_luasnip'
-            }
-        })
+        use({'hrsh7th/nvim-cmp', config = require('plugin/nvim-cmp').setup})
+        use 'saadparwaiz1/cmp_luasnip'
+        use 'hrsh7th/cmp-buffer'
+        use 'hrsh7th/cmp-nvim-lsp'
+        use 'hrsh7th/cmp-path'
         use({
             'RishabhRD/nvim-lsputils',
             config = require('plugin/lsputils').config,

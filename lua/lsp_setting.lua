@@ -9,4 +9,5 @@ local servers = {
     'lua', 'rust', 'js', 'bash', 'gdscript', 'beancount', 'clangd', 'yaml',
     'terraform', 'python'
 }
-for _, lsp in ipairs(servers) do require('lang.' .. lsp) end
+local lsp_common = require('lsp_common')
+for _, lsp in ipairs(servers) do require('lang.' .. lsp).setup(lsp_common) end

@@ -1,5 +1,4 @@
----@diagnostic disable: unused-local
-function OnAttach(client, bufnr)
+function OnAttach(_, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -44,7 +43,10 @@ function OnAttach(client, bufnr)
 
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+function GenCapabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    return capabilities
+end
 
-return {on_attach = OnAttach, capabilities}
+return {on_attach = OnAttach, gen_capabilities = GenCapabilities}
