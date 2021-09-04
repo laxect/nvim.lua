@@ -41,7 +41,7 @@ M.setup = function()
                 select = true
             })
         },
-        completion = {completeopt = 'menuone,noinsert'},
+        completion = {completeopt = 'menu,menuone,noinsert'},
         sources = {
             {name = 'luasnip'}, {name = 'buffer'}, {name = 'nvim_lsp'},
             {name = 'path'}
