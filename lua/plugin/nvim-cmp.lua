@@ -42,10 +42,7 @@ M.setup = function()
             })
         },
         completion = {completeopt = 'menu,menuone,noinsert'},
-        sources = {
-            {name = 'luasnip'}, {name = 'buffer'}, {name = 'nvim_lsp'},
-            {name = 'path'}
-        }
+        sources = {{name = 'luasnip'}, {name = 'nvim_lsp'}, {name = 'path'}}
     })
 end
 
