@@ -1,7 +1,7 @@
 local M = {}
 M.setup = function(lsp_common)
     require'lspconfig'.beancount.setup {
-        cmd = {'beancount-langserver', '--stdio'},
+        cmd = {'bash-language-server', 'start'},
         on_attach = lsp_common.on_attach,
         capabilities = lsp_common.gen_capabilities(),
         init_options = {
