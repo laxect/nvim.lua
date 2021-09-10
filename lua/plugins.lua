@@ -55,7 +55,7 @@ require('packer').startup({
         use 'ray-x/lsp_signature.nvim'
         use 'hashivim/vim-packer'
         -- fzf
-        use 'junegunn/fzf.vim'
+        use 'nvim-telescope/telescope.nvim'
         -- X
         use 'peitalin/vim-jsx-typescript'
         -- tree-sitter
