@@ -64,7 +64,7 @@ u.map('t', '<Leader>c', '<C-\\><C-n><cr>')
 u.map('n', '<Leader>o', '<cmd>Telescope find_files<cr>')
 u.map('n', '<Leader>s', '<cmd>Telescope live_grep<cr>')
 u.map('n', '<Leader>b', '<cmd>Telescope buffers<cr>')
-u.map('n', '<Leader>l', '<cmd>Telescope lsp_document_symbols<cr>')
+u.map('n', '<Leader>l', '<cmd>Telescope treesitter<cr>')
 u.map('n', '<Leader><space>u', '<cmd>PackerSync<cr>')
 u.map('n', '<Leader><space>r', '<cmd>source $MYVIMRC<cr>')
 
