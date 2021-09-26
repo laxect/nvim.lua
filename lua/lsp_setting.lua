@@ -6,7 +6,7 @@ vim.api.nvim_exec([[
 ]], true)
 
 local servers = {
-    'lua', 'rust', 'js', 'bash', 'gdscript', 'beancount', 'clangd', 'yaml',
+    'lua', 'rust', 'js', 'bash', 'gdscript', 'clangd', 'yaml',
     'terraform', 'python', 'html', 'json'
 }
 local lsp_common = require('lsp_common')
