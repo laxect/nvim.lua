@@ -7,7 +7,7 @@ vim.api.nvim_exec([[
 
 local servers = {
     'lua', 'rust', 'js', 'bash', 'gdscript', 'clangd', 'yaml',
-    'terraform', 'python', 'html', 'json'
+    'terraform', 'python', 'html', 'json', 'css'
 }
 local lsp_common = require('lsp_common')
 for _, lsp in ipairs(servers) do require('lang.' .. lsp).setup(lsp_common) end
