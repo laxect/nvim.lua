@@ -26,8 +26,8 @@ require('packer').startup({
         })
 
         use({
-            'akinsho/nvim-bufferline.lua',
-            config = require('plugin/bufferline').config
+            'nanozuki/tabby.nvim',
+            config = require('plugin/tabby').config
         })
 
         use({'yggdroot/indentline', setup = require('plugin/indentline').setup})
