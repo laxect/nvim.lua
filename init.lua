@@ -52,8 +52,9 @@ require'nvim-treesitter.configs'.setup {
 
 -- # key map
 -- buffer
-u.map('n', '<Leader>j', '<cmd>bp<cr>')
-u.map('n', '<Leader>k', '<cmd>bn<cr>')
+u.map('n', '<Leader>j', '<cmd>tabnext<cr>')
+u.map('n', '<Leader>k', '<cmd>tabprev<cr>')
+u.map('n', '<Leader>q', '<cmd>tabclose<cr>')
 -- close highlighter
 u.map('n', '<Leader>n', '<cmd>nohl<cr>')
 -- terminal
