@@ -11,8 +11,8 @@ M.config = function()
     local hl_tabline_fill = util.extract_nvim_hl("TabLineFill")
 
     local active_wins_at_end = {
-        hl = "TabLine",
-        layout = "active_wins_at_end",
+        hl = "TabLineFill",
+        layout = "active_wins_at_tail",
         head = {
             {"  ", hl = {fg = hl_tabline.fg, bg = hl_tabline.bg}},
             {"", hl = {fg = hl_tabline.bg, bg = hl_tabline_fill.bg}}
