@@ -28,8 +28,6 @@ vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 -- # plugins
 require('plugins')
 
-vim.cmd(
-    'hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white')
 vim.cmd('colorscheme edge')
 
 -- # plugin config

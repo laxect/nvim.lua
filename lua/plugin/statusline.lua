@@ -10,22 +10,15 @@ M.config = function()
     local colors = require('colors')
 
     gls.left[1] = {
-        FirstElement = {
-            provider = function() return '▋' end,
-            highlight = {colors.blue, colors.blue}
-        }
-    }
-
-    gls.left[2] = {
         statusIcon = {
-            provider = function() return '  ' end,
+            provider = function() return '   ' end,
             highlight = {colors.white, colors.blue},
             separator = ' ',
             separator_highlight = {colors.blue, colors.black}
         }
     }
 
-    gls.left[3] = {
+    gls.left[2] = {
         FileName = {
             provider = {'FileName'},
             condition = condition.buffer_not_empty,
@@ -35,7 +28,7 @@ M.config = function()
         }
     }
 
-    gls.left[4] = {
+    gls.left[3] = {
         Brand = {
             provider = function()
                 return
@@ -50,7 +43,7 @@ M.config = function()
         }
     }
 
-    gls.left[5] = {
+    gls.left[4] = {
         current_dir = {
             provider = function()
                 local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
@@ -66,7 +59,7 @@ M.config = function()
         return false
     end
 
-    gls.left[6] = {
+    gls.left[5] = {
         DiffAdd = {
             provider = 'DiffAdd',
             condition = checkwidth,
@@ -75,7 +68,7 @@ M.config = function()
         }
     }
 
-    gls.left[7] = {
+    gls.left[6] = {
         DiffModified = {
             provider = 'DiffModified',
             condition = checkwidth,
@@ -84,7 +77,7 @@ M.config = function()
         }
     }
 
-    gls.left[8] = {
+    gls.left[7] = {
         DiffRemove = {
             provider = 'DiffRemove',
             condition = checkwidth,
@@ -93,7 +86,7 @@ M.config = function()
         }
     }
 
-    gls.left[9] = {
+    gls.left[8] = {
         DiagnosticError = {
             provider = 'DiagnosticError',
             icon = ' x',
@@ -101,7 +94,7 @@ M.config = function()
         }
     }
 
-    gls.left[10] = {
+    gls.left[9] = {
         DiagnosticWarn = {
             provider = 'DiagnosticWarn',
             icon = ' !',
