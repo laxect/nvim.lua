@@ -6,6 +6,10 @@ M.setup = function(lsp_common)
   local runtime_path = vim.split(package.path, ';')
   table.insert(runtime_path, 'lua/?.lua')
   table.insert(runtime_path, 'lua/?/init.lua')
+  local function OnAttach(first, bufnr)
+    lsp_common.on_attach(first, bufnr)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>!stylua %<CR>', { noremap = true, silent = true })
+  end
 
   require('lspconfig').sumneko_lua.setup({
     cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
@@ -31,7 +35,7 @@ M.setup = function(lsp_common)
         },
       },
     },
-    on_attach = lsp_common.on_attach,
+    on_attach = OnAttach,
   })
 end
 return M
