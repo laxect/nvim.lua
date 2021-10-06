@@ -11,12 +11,13 @@ M.config = function()
     local hl_tabline_fill = util.extract_nvim_hl("TabLineFill")
 
     local function gen_tab_name(tabid)
+        local number = vim.api.nvim_tabpage_get_number(tabid)
         local focus = vim.api.nvim_tabpage_get_win(tabid)
-        local length = #(vim.api.nvim_tabpage_list_wins(tabid))
+        local length = #(util.tabpage_list_wins(tabid))
         length = length - 1;
         local append = ""
         if (length > 0) then append = " [" .. length .. "+]" end
-        return filename.unique(focus) .. append
+        return number .. "♯" .. filename.unique(focus) .. append
     end
 
     local tab_only = {
