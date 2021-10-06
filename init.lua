@@ -56,7 +56,8 @@ u.map('n', '<Leader>q', '<cmd>tabclose<cr>')
 -- close highlighter
 u.map('n', '<Leader>n', '<cmd>nohl<cr>')
 -- terminal
-u.map('n', '<Leader>t', '<cmd>e term://zsh<cr>')
+u.map('n', '<Leader>tt', '<cmd>tabnew term://zsh<cr>')
+u.map('n', '<Leader>tv', '<cmd>vsplit term://zsh<cr>')
 u.map('t', '<Leader>c', '<C-\\><C-n><cr>')
 
 -- # plugin key map
