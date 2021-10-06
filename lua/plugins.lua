@@ -41,6 +41,7 @@ require('packer').startup({
     -- html emmt
     use('mattn/emmet-vim')
     -- nvim lsp
+    use('mhartington/formatter.nvim')
     use('neovim/nvim-lspconfig')
     use('L3MON4D3/LuaSnip')
     use({ 'hrsh7th/nvim-cmp', config = require('plugin/nvim-cmp').setup })

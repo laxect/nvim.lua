@@ -26,3 +26,19 @@ local lsp_common = require('lsp_common')
 for _, lsp in ipairs(servers) do
   require('lang.' .. lsp).setup(lsp_common)
 end
+
+local formatters = {
+  'lua',
+  'beancount',
+}
+local formatter_config = {}
+for _, lang in ipairs(formatters) do
+  formatter_config[lang] = { require('lang.' .. lang).format }
+end
+require('formatter').setup({
+  filetype = formatter_config,
+})
+vim.api.nvim_exec(
+  'augroup FormatAutogroup autocmd! autocmd BufWritePost *.beancount,*.lua FormatWrite augroup END',
+  true
+)

@@ -1,4 +1,21 @@
 local M = {}
+
+M.format = function()
+  local config_file = vim.fn.findfile('stylua.toml', '.;')
+  local config_flag = ''
+  if vim.fn.empty(config_file) == 0 then
+    config_flag = '--config-path ' .. config_file
+  end
+  return {
+    exe = 'stylua',
+    args = {
+      config_flag,
+      '-',
+    },
+    stdin = true,
+  }
+end
+
 M.setup = function(lsp_common)
   -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
   local sumneko_root_path = vim.fn.stdpath('cache') .. '/lspconfig/sumneko_lua/lua-language-server'
@@ -6,9 +23,10 @@ M.setup = function(lsp_common)
   local runtime_path = vim.split(package.path, ';')
   table.insert(runtime_path, 'lua/?.lua')
   table.insert(runtime_path, 'lua/?/init.lua')
-  local function OnAttach(first, bufnr)
+  local function on_attach(first, bufnr)
     lsp_common.on_attach(first, bufnr)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>!stylua %<CR>', { noremap = true, silent = true })
+    -- override the format
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>Format<CR>', { noremap = true, silent = true })
   end
 
   require('lspconfig').sumneko_lua.setup({
@@ -35,7 +53,7 @@ M.setup = function(lsp_common)
         },
       },
     },
-    on_attach = OnAttach,
+    on_attach = on_attach,
   })
 end
 return M

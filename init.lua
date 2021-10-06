@@ -22,7 +22,6 @@ vim.opt.termguicolors = true
 vim.opt.shortmess = 'filnxtToOFc'
 -- block on https://github.com/neovim/neovim/pull/12378
 vim.cmd('autocmd FileType yaml,haskell,lua,javascript set tabstop=2 | set shiftwidth=2')
-vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 
 -- # plugins
 require('plugins')
@@ -65,4 +64,4 @@ u.map('n', '<Leader>l', '<cmd>Telescope treesitter<cr>')
 u.map('n', '<Leader><space>u', '<cmd>PackerSync<cr>')
 u.map('n', '<Leader><space>r', '<cmd>source $MYVIMRC<cr>')
 
-require('lsp_setting')
+require('lang_setting')
