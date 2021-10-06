@@ -19,9 +19,9 @@ M.config = function()
         return filename.unique(focus) .. append
     end
 
-    local active_wins_at_end = {
+    local tab_only = {
         hl = "TabLineFill",
-        layout = "active_wins_at_tail",
+        layout = "tab_only",
         head = {
             {"  ", hl = {fg = hl_tabline.fg, bg = hl_tabline.bg}},
             {"", hl = {fg = hl_tabline.bg, bg = hl_tabline_fill.bg}}
@@ -62,40 +62,12 @@ M.config = function()
                 hl = {fg = hl_normal.bg, bg = hl_tabline_fill.bg}
             }
         },
-        top_win = {
-            label = function(winid)
-                return {
-                    "  " .. filename.unique(winid) .. " ",
-                    hl = "TabLine"
-                }
-            end,
-            left_sep = {
-                "",
-                hl = {fg = hl_tabline.bg, bg = hl_tabline_fill.bg}
-            },
-            right_sep = {
-                "",
-                hl = {fg = hl_tabline.bg, bg = hl_tabline_fill.bg}
-            }
-        },
-        win = {
-            label = function(winid)
-                return {
-                    "  " .. filename.unique(winid) .. " ",
-                    hl = "TabLine"
-                }
-            end,
-            left_sep = {
-                "",
-                hl = {fg = hl_tabline.bg, bg = hl_tabline_fill.bg}
-            },
-            right_sep = {
-                "",
-                hl = {fg = hl_tabline.bg, bg = hl_tabline_fill.bg}
-            }
+        tail = {
+            {"", hl = {fg = hl_tabline.bg, bg = hl_tabline_fill.bg}},
+            {"  ", hl = {fg = hl_tabline.fg, bg = hl_tabline.bg}}
         }
     }
-    tabby.setup({tabline = active_wins_at_end})
+    tabby.setup({tabline = tab_only})
 end
 
 return M
