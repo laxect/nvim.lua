@@ -1,8 +1,8 @@
 local M = {}
 M.setup = function(lsp_common)
-    require'lspconfig'.yamlls.setup {
-        on_attach = lsp_common.on_attach,
-        capabilities = lsp_common.gen_capabilities()
-    }
+  require('lspconfig').yamlls.setup({
+    on_attach = lsp_common.on_attach,
+    capabilities = lsp_common.gen_capabilities(),
+  })
 end
 return M

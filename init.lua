@@ -21,8 +21,7 @@ vim.opt.termguicolors = true
 -- completion
 vim.opt.shortmess = 'filnxtToOFc'
 -- block on https://github.com/neovim/neovim/pull/12378
-vim.cmd(
-    'autocmd FileType yaml,haskell,lua,javascript set tabstop=2 | set shiftwidth=2')
+vim.cmd('autocmd FileType yaml,haskell,lua,javascript set tabstop=2 | set shiftwidth=2')
 vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 
 -- # plugins
@@ -33,20 +32,20 @@ vim.cmd('colorscheme edge')
 -- # plugin config
 
 -- treesitter
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = 'maintained',
-    highlight = {enable = true},
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = 'gnn',
-            node_incremental = 'grn',
-            scope_incremental = 'grc',
-            node_decremental = 'grm'
-        }
+require('nvim-treesitter.configs').setup({
+  ensure_installed = 'maintained',
+  highlight = { enable = true },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = 'gnn',
+      node_incremental = 'grn',
+      scope_incremental = 'grc',
+      node_decremental = 'grm',
     },
-    indent = {enable = true}
-}
+  },
+  indent = { enable = true },
+})
 
 -- # key map
 -- buffer
