@@ -19,7 +19,7 @@ M.config = function()
     if length > 0 then
       append = ' [' .. length .. '+]'
     end
-    return number .. '♯' .. filename.unique(focus) .. append
+    return filename.unique(focus) .. append .. ' ' .. '♯' .. number
   end
 
   local tab_only = {
