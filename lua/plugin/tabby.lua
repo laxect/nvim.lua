@@ -2,11 +2,11 @@ local M = {}
 
 M.config = function()
     local tabby = require("tabby")
-    local filename = require("tabby.filename")
     local util = require("tabby.util")
+    local filename = require("tabby.filename")
 
-    local hl_tabline = util.extract_nvim_hl("TabLine")
     local hl_normal = util.extract_nvim_hl("Normal")
+    local hl_tabline = util.extract_nvim_hl("TabLine")
     local hl_tabline_sel = util.extract_nvim_hl("TabLineSel")
     local hl_tabline_fill = util.extract_nvim_hl("TabLineFill")
 
