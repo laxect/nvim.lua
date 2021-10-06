@@ -10,6 +10,15 @@ M.config = function()
     local hl_tabline_sel = util.extract_nvim_hl("TabLineSel")
     local hl_tabline_fill = util.extract_nvim_hl("TabLineFill")
 
+    local function gen_tab_name(tabid)
+        local focus = vim.api.nvim_tabpage_get_win(tabid)
+        local length = #(vim.api.nvim_tabpage_list_wins(tabid))
+        length = length - 1;
+        local append = ""
+        if (length > 0) then append = " [" .. length .. "+]" end
+        return filename.unique(focus) .. append
+    end
+
     local active_wins_at_end = {
         hl = "TabLineFill",
         layout = "active_wins_at_tail",
@@ -20,7 +29,7 @@ M.config = function()
         active_tab = {
             label = function(tabid)
                 return {
-                    " " .. tabid .. " ",
+                    " " .. gen_tab_name(tabid) .. " ",
                     hl = {
                         fg = hl_tabline_sel.fg,
                         bg = hl_tabline_sel.bg,
@@ -40,7 +49,7 @@ M.config = function()
         inactive_tab = {
             label = function(tabid)
                 return {
-                    " " .. tabid .. " ",
+                    " " .. gen_tab_name(tabid) .. " ",
                     hl = {fg = hl_normal.fg, bg = hl_normal.bg, style = "bold"}
                 }
             end,
