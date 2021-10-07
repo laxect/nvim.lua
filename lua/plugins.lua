@@ -15,23 +15,23 @@ require('packer').startup({
     use('nvim-lua/plenary.nvim')
     use({
       'glepnir/galaxyline.nvim',
-      config = require('plugin/statusline').config,
+      config = require('plugin.statusline').config,
       requires = {
         { 'kyazdani42/nvim-web-devicons', opt = true },
         {
           'lewis6991/gitsigns.nvim',
           event = 'BufRead',
-          config = require('plugin/gitsigns').config,
+          config = require('plugin.gitsigns').config,
         },
       },
     })
 
     use({
       'nanozuki/tabby.nvim',
-      config = require('plugin/tabby').config,
+      config = require('plugin.tabby').config,
     })
 
-    use({ 'yggdroot/indentline', setup = require('plugin/indentline').setup })
+    use({ 'yggdroot/indentline', setup = require('plugin.indentline').setup })
 
     -- comment and uncomment
     use('scrooloose/nerdcommenter')
@@ -44,14 +44,14 @@ require('packer').startup({
     use('mhartington/formatter.nvim')
     use('neovim/nvim-lspconfig')
     use('L3MON4D3/LuaSnip')
-    use({ 'hrsh7th/nvim-cmp', config = require('plugin/nvim-cmp').setup })
+    use({ 'hrsh7th/nvim-cmp', config = require('plugin.nvim-cmp').setup })
     use('saadparwaiz1/cmp_luasnip')
     use('hrsh7th/cmp-nvim-lsp')
     use('hrsh7th/cmp-path')
     use({
       'RishabhRD/nvim-lsputils',
-      config = require('plugin/lsputils').config,
-      setup = require('plugin/lsputils').setup,
+      config = require('plugin.lsputils').config,
+      setup = require('plugin.lsputils').setup,
       requires = { 'RishabhRD/popfix' },
     })
     use('ray-x/lsp_signature.nvim')
@@ -69,7 +69,7 @@ require('packer').startup({
     -- color
     use({
       'norcalli/nvim-colorizer.lua',
-      config = require('plugin/colorize').config,
+      config = require('plugin.colorize').config,
     })
   end,
   config = {

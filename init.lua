@@ -64,4 +64,4 @@ u.map('n', '<Leader>l', '<cmd>Telescope treesitter<cr>')
 u.map('n', '<Leader><space>u', '<cmd>PackerSync<cr>')
 u.map('n', '<Leader><space>r', '<cmd>source $MYVIMRC<cr>')
 
-require('lang_setting')
+require('lang')
