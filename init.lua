@@ -30,7 +30,7 @@ u.au.FileType = {
 }
 
 -- # plugins
-require('plugins')
+require('plugin')
 
 vim.cmd('colorscheme edge')
 
