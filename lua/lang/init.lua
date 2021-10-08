@@ -11,18 +11,21 @@ vim.api.nvim_exec(
 )
 
 local servers = {
+  'css',
   'lua',
   'rust',
-  'js',
   'bash',
-  'gdscript',
-  'clangd',
-  'yaml',
-  'terraform',
-  'python',
   'html',
   'json',
-  'css',
+}
+local servers_with_default = {
+  'yamlls',
+  'tsserver',
+  'hls',
+  'clangd',
+  'pyright',
+  'gdscript',
+  'terraformls',
 }
 local lsp_common = {}
 
@@ -65,6 +68,13 @@ end
 
 for _, lsp in ipairs(servers) do
   require('lang.' .. lsp).setup(lsp_common)
+end
+
+for _, lsp in ipairs(servers_with_default) do
+  require('lspconfig')[lsp].setup({
+    on_attach = lsp_common.on_attach,
+    capabilities = lsp_common.gen_capabilities(),
+  })
 end
 
 local formatters = {
