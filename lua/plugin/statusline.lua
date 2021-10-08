@@ -89,22 +89,6 @@ M.config = function()
     },
   }
 
-  gls.left[8] = {
-    DiagnosticError = {
-      provider = 'DiagnosticError',
-      icon = ' x',
-      highlight = { colors.red, colors.white },
-    },
-  }
-
-  gls.left[9] = {
-    DiagnosticWarn = {
-      provider = 'DiagnosticWarn',
-      icon = ' !',
-      highlight = { colors.yellow, colors.statusline_bg },
-    },
-  }
-
   gls.right[1] = {
     FileType = {
       provider = function()
@@ -121,7 +105,7 @@ M.config = function()
       provider = function()
         local clients = vim.lsp.get_active_clients()
         if next(clients) ~= nil then
-          return ' ' .. '  ' .. ' LSP '
+          return ' ' .. require('lsp-status').status()
         else
           return ''
         end

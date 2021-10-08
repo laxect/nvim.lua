@@ -1,5 +1,25 @@
 local utils = require('utils')
 
+local lsp_status = require('lsp-status')
+lsp_status.config({
+  kind_labels = {},
+  current_function = true,
+  show_filename = true,
+  diagnostics = true,
+  indicator_separator = ' ',
+  component_separator = ' ',
+  indicator_errors = '',
+  indicator_warnings = '',
+  indicator_info = '🛈',
+  indicator_hint = '❗',
+  indicator_ok = 'OK',
+  spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+  status_symbol = '  ',
+  select_symbol = nil,
+  update_interval = 100,
+})
+lsp_status.register_progress()
+
 vim.api.nvim_exec(
   [[
     sign define DiagnosticsSignError text=✗ texthl=DiagnosticsError linehl= numhl=
@@ -27,16 +47,15 @@ local servers_with_default = {
   'gdscript',
   'terraformls',
 }
-local lsp_common = {}
 
-lsp_common.on_attach = function(_, bufnr, no_lsp_format)
+local lsp_common = {}
+lsp_common.on_attach = function(client, bufnr, no_lsp_format)
+  lsp_status.on_attach(client)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
-
   -- other plugin
-  require('plugin/lsp_signature').setup()
-
+  require('plugin.lsp_signature').setup()
   -- Mappings.
   local opts = { noremap = true, silent = true }
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -63,6 +82,7 @@ end
 lsp_common.gen_capabilities = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
   return capabilities
 end
 

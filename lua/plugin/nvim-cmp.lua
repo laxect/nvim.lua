@@ -1,10 +1,5 @@
 local M = {}
 M.setup = function()
-  -- tab
-  local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-  end
-
   local luasnip = require('luasnip')
   local cmp = require('cmp')
   cmp.setup({

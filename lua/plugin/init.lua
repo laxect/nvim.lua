@@ -17,12 +17,12 @@ require('packer').startup({
       'glepnir/galaxyline.nvim',
       config = require('plugin.statusline').config,
       requires = {
-        { 'kyazdani42/nvim-web-devicons', opt = true },
         {
           'lewis6991/gitsigns.nvim',
           event = 'BufRead',
           config = require('plugin.gitsigns').config,
         },
+        { 'nvim-lua/lsp-status.nvim' },
       },
     })
 

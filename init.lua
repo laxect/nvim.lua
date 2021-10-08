@@ -68,6 +68,6 @@ u.map('n', '<Leader>s', '<cmd>Telescope live_grep<cr>')
 u.map('n', '<Leader>b', '<cmd>Telescope buffers<cr>')
 u.map('n', '<Leader>l', '<cmd>Telescope treesitter<cr>')
 u.map('n', '<Leader><space>u', '<cmd>PackerSync<cr>')
-u.map('n', '<Leader><space>r', '<cmd>source $MYVIMRC<cr>')
+u.map('n', '<Leader><space>r', '<cmd>source %<cr>')
 
 require('lang')
