@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 vim.api.nvim_exec(
   [[
     sign define DiagnosticsSignError text=✗ texthl=DiagnosticsError linehl= numhl=
@@ -24,7 +26,7 @@ local servers = {
 }
 local lsp_common = {}
 
-lsp_common.on_attach = function(_, bufnr)
+lsp_common.on_attach = function(_, bufnr, no_lsp_format)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
@@ -50,7 +52,9 @@ lsp_common.on_attach = function(_, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  if no_lsp_format ~= true then
+    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  end
 end
 
 lsp_common.gen_capabilities = function()
@@ -67,14 +71,24 @@ local formatters = {
   'lua',
   'beancount',
 }
+local formatters_types = {}
 local formatter_config = {}
 for _, lang in ipairs(formatters) do
   formatter_config[lang] = { require('lang.' .. lang).format }
+  formatters_types[#formatters_types + 1] = require('lang.' .. lang).filetypes
 end
 require('formatter').setup({
   filetype = formatter_config,
 })
-vim.api.nvim_exec(
-  'augroup FormatAutogroup autocmd! autocmd BufWritePost *.beancount,*.lua FormatWrite augroup END',
-  true
-)
+
+local formatters_types_str = table.concat(formatters_types, ',')
+utils.au.group('FormatAutogroup', {
+  { 'BufWritePost', formatters_types_str, ':FormatWrite' },
+  {
+    'BufEnter',
+    formatters_types_str,
+    function()
+      vim.api.nvim_buf_set_keymap(0, 'n', '<Space>f', ':Format<CR>', { noremap = true, silent = true })
+    end,
+  },
+})

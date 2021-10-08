@@ -21,7 +21,13 @@ vim.opt.termguicolors = true
 -- completion
 vim.opt.shortmess = 'filnxtToOFc'
 -- block on https://github.com/neovim/neovim/pull/12378
-vim.cmd('autocmd FileType yaml,haskell,lua,javascript set tabstop=2 | set shiftwidth=2')
+u.au.FileType = {
+  'yaml,haskell,lua,javascript',
+  function()
+    vim.bo.tabstop = 2
+    vim.bo.shiftwidth = 2
+  end,
+}
 
 -- # plugins
 require('plugins')

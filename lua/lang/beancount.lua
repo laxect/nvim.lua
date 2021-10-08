@@ -10,11 +10,11 @@ M.format = function()
   }
 end
 
+M.filetypes = '*.beancount'
+
 M.setup = function(lsp_common)
   local function OnAttach(first, bufnr)
-    lsp_common.on_attach(first, bufnr)
-    -- override the format
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>Format<CR>', { noremap = true, silent = true })
+    lsp_common.on_attach(first, bufnr, true)
   end
   require('lspconfig').beancount.setup({
     cmd = { 'beancount-language-server' },
@@ -26,4 +26,5 @@ M.setup = function(lsp_common)
     },
   })
 end
+
 return M
