@@ -52,22 +52,31 @@ require('nvim-treesitter.configs').setup({
   indent = { enable = true },
 })
 
+local wk = require('which-key')
+
 -- # key map
 -- buffer
-u.map('n', '<Leader>q', '<cmd>tabclose<cr>')
--- close highlighter
-u.map('n', '<Leader>n', '<cmd>nohl<cr>')
--- terminal
-u.map('n', '<Leader>tt', '<cmd>tabnew term://zsh<cr>')
-u.map('n', '<Leader>tv', '<cmd>vsplit term://zsh<cr>')
-u.map('t', '<Leader>c', '<C-\\><C-n><cr>')
+wk.register({
+  q = { '<cmd>tabclose<cr>', 'Close Tab' },
+  n = { '<cmd>nohl<cr>', 'Shut HL off' },
+  t = {
+    t = { '<cmd>tabnew term://zsh<cr>', 'Open Terminal in new tab' },
+    v = {
+      '<cmd>vsplit term://zsh<cr>',
+      'Open Terminal in Split',
+    },
+  },
+  o = { '<cmd>Telescope find_files<cr>', 'Open Files' },
+  s = { '<cmd>Telescope live_grep<cr>', 'Search Files' },
+  b = { '<cmd>Telescope buffers<cr>', 'List Buffers' },
+  ['<space>'] = {
+    u = { '<cmd>PackerSync<cr>', 'Packer Sync' },
+    r = { '<cmd>source %<cr>', 'Source this File' },
+  },
+}, {
+  prefix = '<Leader>',
+})
 
--- # plugin key map
-u.map('n', '<Leader>o', '<cmd>Telescope find_files<cr>')
-u.map('n', '<Leader>s', '<cmd>Telescope live_grep<cr>')
-u.map('n', '<Leader>b', '<cmd>Telescope buffers<cr>')
-u.map('n', '<Leader>l', '<cmd>Telescope treesitter<cr>')
-u.map('n', '<Leader><space>u', '<cmd>PackerSync<cr>')
-u.map('n', '<Leader><space>r', '<cmd>source %<cr>')
+wk.register({ ['<Leader>c'] = { '<C-\\><C-n><cr>', 'Back to Nvim' } }, { mode = 't' })
 
 require('lang')

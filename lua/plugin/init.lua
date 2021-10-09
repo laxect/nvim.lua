@@ -7,6 +7,9 @@ require('packer').startup({
     use('marko-cerovac/material.nvim')
     use('Shatur/neovim-ayu')
 
+    -- which key
+    use({ 'folke/which-key.nvim', config = require('plugin.which-key').config })
+
     -- auto pair backet
     use('jiangmiao/auto-pairs')
     use('tpope/vim-surround')
@@ -68,8 +71,6 @@ require('packer').startup({
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
     use('terminalnode/sway-vim-syntax')
     use('nfnty/vim-nftables')
-    -- git
-    use('tpope/vim-fugitive')
     -- color
     use({
       'norcalli/nvim-colorizer.lua',

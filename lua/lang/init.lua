@@ -50,32 +50,33 @@ local servers_with_default = {
 
 local lsp_common = {}
 lsp_common.on_attach = function(client, bufnr, no_lsp_format)
+  local wk = require('which-key')
   lsp_status.on_attach(client)
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
   -- other plugin
   require('plugin.lsp_signature').setup()
   -- Mappings.
-  local opts = { noremap = true, silent = true }
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'gk', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', 'gj', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  local opts = { buffer = bufnr }
+  wk.register({
+    g = {
+      D = { '<Cmd>lua vim.lsp.buf.declaration()<CR>', 'Goto Declaration' },
+      d = { '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Goto Definition' },
+      i = { '<cmd>lua vim.lsp.buf.implementation()<CR>', 'Goto Implementation' },
+      r = { '<cmd>lua vim.lsp.buf.references()<CR>', 'Goto Reference' },
+      k = { '<cmd>lua vim.diagnostic.goto_prev()<CR>', 'Next Diagnostics' },
+      j = { '<cmd>lua vim.diagnostic.goto_next()<CR>', 'Prev Diagnostics' },
+    },
+    K = { '<Cmd>lua vim.lsp.buf.hover()<CR>', 'Signature' },
+    ['<C-k>'] = { '<cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature Help' },
+    ['<space>'] = {
+      D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type Definition' },
+      r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename' },
+      q = { '<cmd>lua vim.diagnostic.setloclist()<CR>', 'Diagnostics List' },
+      e = { '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', 'Line Diagnostics' },
+      a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'Code Action' },
+    },
+  }, opts)
   if no_lsp_format ~= true then
-    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    wk.register({ ['<space>f'] = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'Format' } }, opts)
   end
 end
 
@@ -118,7 +119,8 @@ utils.au.group('FormatAutogroup', {
     'BufEnter',
     formatters_types_str,
     function()
-      vim.api.nvim_buf_set_keymap(0, 'n', '<Space>f', ':Format<CR>', { noremap = true, silent = true })
+      local now = vim.api.nvim_get_current_buf()
+      require('which-key').register({ ['<space>f'] = { '<cmd>Format<CR>', 'Format' } }, { buffer = now })
     end,
   },
 })
