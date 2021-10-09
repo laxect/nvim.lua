@@ -68,7 +68,12 @@ require('packer').startup({
     -- X
     use('peitalin/vim-jsx-typescript')
     -- tree-sitter
-    use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+    use({
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      config = require('plugin.treesitter').config,
+      requires = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+    })
     use('terminalnode/sway-vim-syntax')
     use('nfnty/vim-nftables')
     -- color
