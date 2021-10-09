@@ -5,7 +5,10 @@ function M.config()
   local wk = require('which-key')
   wk.register({
     ['<Leader>c'] = { '<Plug>NERDCommenterToggle', 'Toggle Comment' },
-  })
+  }, { mode = 'n' })
+  wk.register({
+    ['<Leader>c'] = { '<Plug>NERDCommenterToggle', 'Toggle Comment' },
+  }, { mode = 'v' })
 end
 
 return M

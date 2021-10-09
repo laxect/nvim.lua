@@ -42,7 +42,6 @@ local wk = require('which-key')
 -- buffer
 wk.register({
   q = { '<cmd>tabclose<cr>', 'Close Tab' },
-  n = { '<cmd>nohl<cr>', 'Shut HL off' },
   t = {
     name = 'Terminal',
     t = { '<cmd>tabnew term://zsh<cr>', 'Open Terminal in new tab' },
@@ -55,7 +54,7 @@ wk.register({
   s = { '<cmd>Telescope live_grep<cr>', 'Search Files' },
   b = { '<cmd>Telescope buffers<cr>', 'List Buffers' },
   ['<space>'] = {
-    name = "Vim Actions",
+    name = 'Vim Actions',
     u = { '<cmd>PackerSync<cr>', 'Packer Sync' },
     r = { '<cmd>source %<cr>', 'Source this File' },
   },
