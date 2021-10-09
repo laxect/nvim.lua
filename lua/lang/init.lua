@@ -68,6 +68,7 @@ lsp_common.on_attach = function(client, bufnr, no_lsp_format)
     K = { '<Cmd>lua vim.lsp.buf.hover()<CR>', 'Signature' },
     ['<C-k>'] = { '<cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature Help' },
     ['<space>'] = {
+      name = 'Lsp Utils',
       D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type Definition' },
       r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename' },
       q = { '<cmd>lua vim.diagnostic.setloclist()<CR>', 'Diagnostics List' },

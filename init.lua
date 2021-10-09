@@ -60,6 +60,7 @@ wk.register({
   q = { '<cmd>tabclose<cr>', 'Close Tab' },
   n = { '<cmd>nohl<cr>', 'Shut HL off' },
   t = {
+    name = 'Terminal',
     t = { '<cmd>tabnew term://zsh<cr>', 'Open Terminal in new tab' },
     v = {
       '<cmd>vsplit term://zsh<cr>',
@@ -70,6 +71,7 @@ wk.register({
   s = { '<cmd>Telescope live_grep<cr>', 'Search Files' },
   b = { '<cmd>Telescope buffers<cr>', 'List Buffers' },
   ['<space>'] = {
+    name = "Vim Actions",
     u = { '<cmd>PackerSync<cr>', 'Packer Sync' },
     r = { '<cmd>source %<cr>', 'Source this File' },
   },

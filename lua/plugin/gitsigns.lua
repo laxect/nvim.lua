@@ -30,6 +30,7 @@ M.config = function()
 
   require('which-key').register({
     h = {
+      name = 'Git',
       s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', 'Stage' },
       u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', 'UnStage' },
       r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', 'Reset' },
