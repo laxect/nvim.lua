@@ -41,7 +41,7 @@ require('packer').startup({
     })
 
     -- comment and uncomment
-    use('scrooloose/nerdcommenter')
+    use({ 'scrooloose/nerdcommenter', config = require('plugin.nerdcommenter').config })
     -- Tree look
     use({ 'scrooloose/nerdtree', opt = true, cmd = 'NERDTreeToggle' })
 
