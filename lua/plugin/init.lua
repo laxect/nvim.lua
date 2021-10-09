@@ -46,7 +46,7 @@ require('packer').startup({
     use({ 'scrooloose/nerdtree', opt = true, cmd = 'NERDTreeToggle' })
 
     -- html emmt
-    use('mattn/emmet-vim')
+    use({ 'mattn/emmet-vim', ft = { 'html', 'js', 'ts' } })
     -- nvim lsp
     use('mhartington/formatter.nvim')
     use('neovim/nvim-lspconfig')
