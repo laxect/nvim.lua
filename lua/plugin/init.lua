@@ -34,7 +34,7 @@ require('packer').startup({
     use({
       'yggdroot/indentline',
       config = require('plugin.indentline').config,
-      ft = { 'lua', 'rust', 'python', 'beancount' },
+      cmd = 'IndentLinesToggle',
     })
 
     -- comment and uncomment
