@@ -25,7 +25,7 @@ vim.api.nvim_exec(
     sign define DiagnosticsSignError text=✗ texthl=DiagnosticsError linehl= numhl=
     sign define DiagnosticsSignWarning text=‼ texthl=DiagnosticsWarning linehl= numhl=
     sign define DiagnosticsSignInformation text=! texthl=DiagnosticsInformation linehl= numhl=
-    sign define DiagnosticsSignHint text=🠒 texthl=DiagnosticsHint linehl= numhl=  
+    sign define DiagnosticsSignHint text=🠒 texthl=DiagnosticsHint linehl= numhl=
 ]],
   true
 )
@@ -101,8 +101,8 @@ local formatters = {
   'lua',
   'beancount',
 }
-local formatters_types = {}
 local formatter_config = {}
+local formatters_types = {}
 for _, lang in ipairs(formatters) do
   formatter_config[lang] = { require('lang.' .. lang).format }
   formatters_types[#formatters_types + 1] = require('lang.' .. lang).filetypes
