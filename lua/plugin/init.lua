@@ -31,7 +31,11 @@ require('packer').startup({
       config = require('plugin.tabby').config,
     })
 
-    use({ 'yggdroot/indentline', setup = require('plugin.indentline').setup })
+    use({
+      'yggdroot/indentline',
+      config = require('plugin.indentline').config,
+      ft = { 'lua', 'rust', 'python', 'beancount' },
+    })
 
     -- comment and uncomment
     use('scrooloose/nerdcommenter')

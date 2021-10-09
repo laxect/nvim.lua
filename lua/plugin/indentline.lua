@@ -1,8 +1,8 @@
 local M = {}
 
-M.setup = function()
-  require('utils').g('indentLine_setConceal', 0)
-  require('utils').g('indentLine_char', '┊')
+M.config = function()
+  local u = require('utils')
+  u.g('indentLine_char', '┊')
 end
 
 return M
