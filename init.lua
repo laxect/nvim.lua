@@ -62,6 +62,7 @@ wk.register({
   prefix = '<Leader>',
 })
 
-wk.register({ ['<Leader>c'] = { '<C-\\><C-n><cr>', 'Back to Nvim' } }, { mode = 't' })
+local exit_terminal_seq = vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, true, true)
+wk.register({ ['<Leader>c'] = { exit_terminal_seq, 'Back to Nvim' } }, { mode = 't' })
 
 require('lang')
