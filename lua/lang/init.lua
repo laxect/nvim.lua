@@ -39,11 +39,10 @@ local servers = {
   'json',
 }
 local servers_with_default = {
-  'yamlls',
-  'tsserver',
-  'hls',
   'clangd',
+  'yamlls',
   'pyright',
+  'tsserver',
   'gdscript',
   'terraformls',
 }

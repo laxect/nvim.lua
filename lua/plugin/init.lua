@@ -40,8 +40,8 @@ require('packer').startup({
       cmd = 'IndentLinesToggle',
     })
 
-    -- comment and uncomment
-    use({ 'scrooloose/nerdcommenter', config = require('plugin.nerdcommenter').config })
+    -- comment
+    use({ 'terrortylor/nvim-comment', config = require('plugin.comment').config })
     -- Tree look
     use({ 'scrooloose/nerdtree', opt = true, cmd = 'NERDTreeToggle' })
 
