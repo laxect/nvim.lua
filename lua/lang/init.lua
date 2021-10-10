@@ -40,6 +40,7 @@ local servers = {
 }
 local servers_with_default = {
   'clangd',
+  'denols',
   'yamlls',
   'pyright',
   'tsserver',
