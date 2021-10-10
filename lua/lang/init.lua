@@ -31,6 +31,7 @@ vim.api.nvim_exec(
 )
 
 local servers = {
+  'ts',
   'css',
   'lua',
   'rust',
@@ -40,10 +41,8 @@ local servers = {
 }
 local servers_with_default = {
   'clangd',
-  'denols',
   'yamlls',
   'pyright',
-  'tsserver',
   'gdscript',
   'terraformls',
 }
