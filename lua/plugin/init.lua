@@ -42,8 +42,6 @@ require('packer').startup({
 
     -- comment
     use({ 'terrortylor/nvim-comment', config = require('plugin.comment').config })
-    -- Tree look
-    use({ 'scrooloose/nerdtree', opt = true, cmd = 'NERDTreeToggle' })
 
     -- html emmt
     use({ 'mattn/emmet-vim', ft = { 'html', 'js', 'ts' } })
