@@ -50,9 +50,6 @@ wk.register({
       'Open Terminal in Split',
     },
   },
-  o = { '<cmd>Telescope find_files<cr>', 'Open Files' },
-  s = { '<cmd>Telescope live_grep<cr>', 'Search Files' },
-  b = { '<cmd>Telescope buffers<cr>', 'List Buffers' },
   ['<space>'] = {
     name = 'Vim Actions',
     u = { '<cmd>PackerSync<cr>', 'Packer Sync' },

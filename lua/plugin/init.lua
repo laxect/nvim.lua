@@ -60,8 +60,12 @@ require('packer').startup({
     })
     use('ray-x/lsp_signature.nvim')
     use('hashivim/vim-packer')
-    -- fzf
-    use('nvim-telescope/telescope.nvim')
+    -- telescope
+    use({
+      'nvim-telescope/telescope.nvim',
+      config = require('plugin.telescope').config,
+      requires = { 'jvgrootveld/telescope-zoxide' },
+    })
     -- X
     use('peitalin/vim-jsx-typescript')
     -- tree-sitter
