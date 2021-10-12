@@ -113,9 +113,18 @@ require('formatter').setup({
   filetype = formatter_config,
 })
 
+local lsp_format_types = { '*.rs' }
+local lsp_format_types_str = table.concat(lsp_format_types, ',')
 local formatters_types_str = table.concat(formatters_types, ',')
 utils.au.group('FormatAutogroup', {
-  { 'BufWritePost', formatters_types_str, ':FormatWrite' },
+  { 'BufWritePre', formatters_types_str, ':FormatWrite' },
+  {
+    'BufWritePre',
+    lsp_format_types_str,
+    function()
+      vim.lsp.buf.formatting_sync()
+    end,
+  },
   {
     'BufEnter',
     formatters_types_str,
