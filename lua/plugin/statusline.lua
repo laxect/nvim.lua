@@ -9,6 +9,13 @@ M.config = function()
 
   local colors = require('colors')
 
+  -- reset section for reload
+  gls.left = {}
+  gls.mid = {}
+  gls.right = {}
+  gls.short_line_left = {}
+  gls.short_line_right = {}
+
   table.insert(gls.left, {
     StatusIcon = {
       provider = function()
@@ -189,6 +196,7 @@ M.config = function()
     {
       FileName = {
         provider = { 'FileName' },
+        condition = condition.buffer_not_empty,
         highlight = { colors.white, colors.black },
       },
     },

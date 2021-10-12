@@ -35,9 +35,8 @@ require('packer').startup({
     })
 
     use({
-      'yggdroot/indentline',
+      'lukas-reineke/indent-blankline.nvim',
       config = require('plugin.indentline').config,
-      cmd = 'IndentLinesToggle',
     })
 
     -- comment
