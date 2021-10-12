@@ -14,6 +14,15 @@ function M.config()
           print('Directory changed to ' .. selection.path)
         end,
       },
+      ['<c-t>'] = {
+        action = function(selection)
+          vim.cmd('tabnew')
+          vim.cmd('tcd ' .. selection.path)
+        end,
+        after_action = function(_)
+          require('telescope.builtin').find_files()
+        end,
+      },
     },
   })
 
