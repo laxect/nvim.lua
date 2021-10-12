@@ -38,6 +38,7 @@ local servers = {
   'bash',
   'html',
   'json',
+  -- 'beancount',
 }
 local servers_with_default = {
   'clangd',
