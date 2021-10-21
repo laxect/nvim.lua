@@ -71,7 +71,6 @@ lsp_common.on_attach = function(client, bufnr, no_lsp_format)
       name = 'Lsp Utils',
       D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type Definition' },
       r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename' },
-      q = { '<cmd>lua vim.diagnostic.setloclist()<CR>', 'Diagnostics List' },
       e = { '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', 'Line Diagnostics' },
       a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'Code Action' },
     },

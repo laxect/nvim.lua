@@ -59,7 +59,7 @@ require('packer').startup({
       requires = { 'RishabhRD/popfix' },
     })
     use('ray-x/lsp_signature.nvim')
-    use('hashivim/vim-packer')
+    use({ 'folke/trouble.nvim', config = require('plugin.trouble').config })
     -- telescope
     use({
       'nvim-telescope/telescope.nvim',
