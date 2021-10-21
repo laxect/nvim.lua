@@ -3,10 +3,10 @@ local M = {}
 M.config = function()
   require('gitsigns').setup({
     signs = {
-      add = { hl = 'DiffAdd', text = '▌', numhl = 'GitSignsAddNr' },
+      add = { hl = 'DiffAdd', text = '+', numhl = 'GitSignsAddNr' },
       change = {
         hl = 'DiffChange',
-        text = '▌',
+        text = '>',
         numhl = 'GitSignsChangeNr',
       },
       delete = { hl = 'DiffDelete', text = '_', numhl = 'GitSignsDeleteNr' },

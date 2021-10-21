@@ -20,15 +20,11 @@ lsp_status.config({
 })
 lsp_status.register_progress()
 
-vim.api.nvim_exec(
-  [[
-    sign define DiagnosticsSignError text=✗ texthl=DiagnosticsError linehl= numhl=
-    sign define DiagnosticsSignWarning text=‼ texthl=DiagnosticsWarning linehl= numhl=
-    sign define DiagnosticsSignInformation text=! texthl=DiagnosticsInformation linehl= numhl=
-    sign define DiagnosticsSignHint text=🠒 texthl=DiagnosticsHint linehl= numhl=
-]],
-  true
-)
+local signs = { Error = '✗', Warn = '‼', Hint = '!', Info = '' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+end
 
 local servers = {
   'ts',
