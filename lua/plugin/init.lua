@@ -38,6 +38,8 @@ require('packer').startup({
       'lukas-reineke/indent-blankline.nvim',
       config = require('plugin.indentline').config,
     })
+    -- language
+    use('tounaishouta/coq.vim')
 
     -- comment
     use({ 'terrortylor/nvim-comment', config = require('plugin.comment').config })
