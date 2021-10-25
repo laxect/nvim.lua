@@ -39,7 +39,8 @@ require('packer').startup({
       config = require('plugin.indentline').config,
     })
     -- language
-    use('tounaishouta/coq.vim')
+    -- coq
+    use({ 'whonore/Coqtail', setup = require('plugin.coqtail').setup, config = require('plugin.coqtail').config })
 
     -- comment
     use({ 'terrortylor/nvim-comment', config = require('plugin.comment').config })
