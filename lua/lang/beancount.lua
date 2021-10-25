@@ -17,12 +17,12 @@ M.setup = function(lsp_common)
     lsp_common.on_attach(first, bufnr, true)
   end
   require('lspconfig').beancount.setup({
-    cmd = { 'beancount-language-server', '--stdio' },
+    cmd = { 'beancount-language-server' },
     on_attach = on_attach,
     capabilities = lsp_common.gen_capabilities(),
     init_options = {
-      journalFile = '~/Documents/ShimaCount/main.beancount',
-      pythonPath = 'python3',
+      journal_file = '/home/gyara/Documents/ShimaCount/main.beancount',
+      python_path = 'python3',
     },
   })
 end
