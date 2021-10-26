@@ -21,6 +21,7 @@ function M.config()
         prefix = '<Leader>l',
         buffer = buffer,
       })
+      wk.register({ ['<c-j>'] = { '<c-o>:CoqNext<cr>', 'Coq Next Sentence(s)' } }, { mode = 'i', buffer = buffer })
     end,
   }
 end
