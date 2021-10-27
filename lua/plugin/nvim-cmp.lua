@@ -11,6 +11,7 @@ M.config = function()
     mapping = {
       ['<C-p>'] = cmp.mapping.select_prev_item(),
       ['<C-n>'] = cmp.mapping.select_next_item(),
+      ['<C-y>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ['<C-e>'] = cmp.mapping.close(),
       -- smart tab
       ['<Tab>'] = function(fallback)
@@ -31,10 +32,6 @@ M.config = function()
           fallback()
         end
       end,
-      ['<CR>'] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
-      }),
     },
     completion = { completeopt = 'menu,menuone,noinsert' },
     sources = { { name = 'luasnip' }, { name = 'nvim_lsp' }, { name = 'path' } },
@@ -53,6 +50,18 @@ M.config = function()
   cmp.setup.cmdline('/', {
     sources = {
       { name = 'buffer' },
+    },
+  })
+
+  require('nvim-autopairs').setup({})
+  require('nvim-autopairs.completion.cmp').setup({
+    map_cr = true, --  map <CR> on insert mode
+    map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
+    auto_select = true, -- automatically select the first item
+    insert = false, -- use insert confirm behavior instead of replace
+    map_char = { -- modifies the function or method delimiter by filetypes
+      all = '(',
+      tex = '{',
     },
   })
 end

@@ -11,7 +11,6 @@ require('packer').startup({
     use({ 'folke/which-key.nvim', config = require('plugin.which-key').config })
 
     -- auto pair backet
-    use('jiangmiao/auto-pairs')
     use('tpope/vim-surround')
 
     -- lines
@@ -57,6 +56,7 @@ require('packer').startup({
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/cmp-cmdline')
+    use('windwp/nvim-autopairs')
     use({
       'RishabhRD/nvim-lsputils',
       config = require('plugin.lsputils').config,
