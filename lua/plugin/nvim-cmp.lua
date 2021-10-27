@@ -39,6 +39,13 @@ M.config = function()
     completion = { completeopt = 'menu,menuone,noinsert' },
     sources = { { name = 'luasnip' }, { name = 'nvim_lsp' }, { name = 'path' } },
   })
+
+  ---@diagnostic disable-next-line: undefined-field
+  require('cmp').setup.cmdline(':', {
+    sources = {
+      { name = 'cmdline' },
+    },
+  })
 end
 
 return M

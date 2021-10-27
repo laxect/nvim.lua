@@ -51,7 +51,7 @@ require('packer').startup({
     use('mhartington/formatter.nvim')
     use('neovim/nvim-lspconfig')
     use('L3MON4D3/LuaSnip')
-    use({ 'hrsh7th/nvim-cmp', config = require('plugin.nvim-cmp').config })
+    use({ 'hrsh7th/nvim-cmp', config = require('plugin.nvim-cmp').config, requires = { 'hrsh7th/cmp-cmdline' } })
     use('saadparwaiz1/cmp_luasnip')
     use('hrsh7th/cmp-nvim-lsp')
     use('hrsh7th/cmp-path')
