@@ -42,8 +42,17 @@ M.config = function()
 
   ---@diagnostic disable-next-line: undefined-field
   require('cmp').setup.cmdline(':', {
-    sources = {
+    sources = cmp.config.sources({
+      { name = 'path' },
+    }, {
       { name = 'cmdline' },
+    }),
+  })
+
+  ---@diagnostic disable-next-line: undefined-field
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' },
     },
   })
 end
