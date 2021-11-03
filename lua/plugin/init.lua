@@ -47,7 +47,6 @@ require('packer').startup({
     -- html emmt
     use({ 'mattn/emmet-vim', ft = { 'html', 'js', 'ts' } })
     -- nvim lsp
-    use('github/copilot.vim')
     use('mhartington/formatter.nvim')
     use('neovim/nvim-lspconfig')
     use('L3MON4D3/LuaSnip')
