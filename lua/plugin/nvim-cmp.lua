@@ -16,7 +16,13 @@ M.config = function()
       ['<C-p>'] = cmp.mapping.select_prev_item(),
       ['<C-n>'] = cmp.mapping.select_next_item(),
       ['<C-y>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-e>'] = cmp.mapping.close(),
+      ['<C-e>'] = function(_)
+        cmp.mapping.close()
+        local copilot_keys = vim.fn['copilot#Accept']()
+        if copilot_keys ~= '' then
+          vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+        end
+      end,
       -- smart tab
       ['<Tab>'] = function(fallback)
         if cmp.visible() then
@@ -24,12 +30,7 @@ M.config = function()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else
-          local copilot_keys = vim.fn['copilot#Accept']()
-          if copilot_keys ~= '' then
-            vim.api.nvim_feedkeys(copilot_keys, 'i', true)
-          else
-            fallback()
-          end
+          fallback()
         end
       end,
       ['<S-Tab>'] = function(fallback)
