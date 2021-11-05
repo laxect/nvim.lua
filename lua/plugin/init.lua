@@ -17,9 +17,7 @@ require('packer').startup({
     use('nvim-lua/plenary.nvim')
     use({
       'TimUntersberger/neogit',
-      config = function()
-        require('neogit').setup({})
-      end,
+      config = require('plugin.neogit').config,
     })
     use({
       'glepnir/galaxyline.nvim',
