@@ -16,6 +16,12 @@ require('packer').startup({
     -- lines
     use('nvim-lua/plenary.nvim')
     use({
+      'TimUntersberger/neogit',
+      config = function()
+        require('neogit').setup({})
+      end,
+    })
+    use({
       'glepnir/galaxyline.nvim',
       config = require('plugin.statusline').config,
       requires = {
