@@ -1,11 +1,7 @@
 require('packer').startup({
   function(use)
     -- themes
-    use({ 'sonph/onehalf', rtp = 'vim' })
     use('sainnhe/edge')
-    use('Th3Whit3Wolf/one-nvim')
-    use('marko-cerovac/material.nvim')
-    use('Shatur/neovim-ayu')
 
     -- which key
     use({ 'folke/which-key.nvim', config = require('plugin.which-key').config })
@@ -18,6 +14,7 @@ require('packer').startup({
     use({
       'TimUntersberger/neogit',
       config = require('plugin.neogit').config,
+      requires = { 'sindrets/diffview.nvim' },
     })
     use({
       'glepnir/galaxyline.nvim',
@@ -43,7 +40,12 @@ require('packer').startup({
     })
     -- language
     -- coq
-    use({ 'whonore/Coqtail', setup = require('plugin.coqtail').setup, config = require('plugin.coqtail').config })
+    use({
+      'whonore/Coqtail',
+      setup = require('plugin.coqtail').setup,
+      config = require('plugin.coqtail').config,
+      ft = { 'coq' },
+    })
 
     -- comment
     use({ 'terrortylor/nvim-comment', config = require('plugin.comment').config })
