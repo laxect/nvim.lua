@@ -4,7 +4,7 @@ M.config = function()
   local gl = require('galaxyline')
   local gls = gl.section
   local condition = require('galaxyline.condition')
-  local colors = require('galaxyline.themes.colors')['rose-pine']
+  local colors = require('galaxyline.themes.colors')[vim.g.colors_name]
 
   gl.short_line_list = { ' ' }
 
@@ -56,7 +56,6 @@ M.config = function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
         return ' ' .. dir_name .. ' '
       end,
-      highlight = { colors.fg },
     },
   })
 
@@ -134,7 +133,6 @@ M.config = function()
     GitBranch = {
       provider = 'GitBranch',
       condition = condition.check_git_workspace,
-      highlight = { colors.black },
     },
   })
 
