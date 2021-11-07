@@ -48,4 +48,17 @@ function S.group(grp, cmds)
   cmd('augroup END')
 end
 
-return { map = map, g = g, au = au }
+local function capture(cmd, raw)
+  local f = assert(io.popen(cmd, 'r'))
+  local s = assert(f:read('*a'))
+  f:close()
+  if raw then
+    return s
+  end
+  s = string.gsub(s, '^%s+', '')
+  s = string.gsub(s, '%s+$', '')
+  s = string.gsub(s, '[\n\r]+', ' ')
+  return s
+end
+
+return { g = g, au = au, capture = capture }

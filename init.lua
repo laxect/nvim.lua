@@ -7,8 +7,6 @@ vim.opt.directory = '/dev/shm'
 vim.opt.hidden = true
 -- line number
 vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.cursorline = true
 -- mouse on
 -- a for all
 -- r for for |hit-enter| and |more-prompt|
@@ -63,3 +61,16 @@ local exit_terminal_seq = vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, tr
 wk.register({ ['<Leader>c'] = { exit_terminal_seq, 'Back to Nvim' } }, { mode = 't' })
 
 require('lang')
+
+u.au.group('FocusedAndUnfocused', function(aucmd)
+  aucmd({ 'WinEnter', 'BufEnter' }, function()
+    vim.wo.relativenumber = true
+    vim.wo.cursorline = true
+  end)
+  aucmd({ 'WinLeave', 'BufLeave' }, function()
+    vim.wo.relativenumber = false
+    vim.wo.cursorline = false
+  end)
+end)
+
+require('auto_im')
