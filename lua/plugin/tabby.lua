@@ -73,4 +73,14 @@ M.config = function()
   tabby.setup({ tabline = tab_only })
 end
 
+require('utils').au.group('Tabby', {
+  {
+    'ColorScheme',
+    '*',
+    function()
+      require('plugin.tabby').config()
+    end,
+  },
+})
+
 return M

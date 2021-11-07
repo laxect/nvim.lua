@@ -41,7 +41,7 @@ end)
 -- # plugins
 require('plugin')
 
-vim.cmd('colorscheme edge')
+vim.cmd('colorscheme rose-pine')
 
 -- # plugin config
 
