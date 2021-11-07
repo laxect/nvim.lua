@@ -26,6 +26,17 @@ u.au.FileType = {
     vim.bo.shiftwidth = 2
   end,
 }
+-- relative line number and cursor line
+u.au.group('FocusedAndUnfocused', function(aucmd)
+  aucmd({ 'WinEnter', 'BufEnter' }, function()
+    vim.wo.relativenumber = true
+    vim.wo.cursorline = true
+  end)
+  aucmd({ 'WinLeave', 'BufLeave' }, function()
+    vim.wo.relativenumber = false
+    vim.wo.cursorline = false
+  end)
+end)
 
 -- # plugins
 require('plugin')
@@ -61,16 +72,5 @@ local exit_terminal_seq = vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, tr
 wk.register({ ['<Leader>c'] = { exit_terminal_seq, 'Back to Nvim' } }, { mode = 't' })
 
 require('lang')
-
-u.au.group('FocusedAndUnfocused', function(aucmd)
-  aucmd({ 'WinEnter', 'BufEnter' }, function()
-    vim.wo.relativenumber = true
-    vim.wo.cursorline = true
-  end)
-  aucmd({ 'WinLeave', 'BufLeave' }, function()
-    vim.wo.relativenumber = false
-    vim.wo.cursorline = false
-  end)
-end)
 
 require('auto_im')
