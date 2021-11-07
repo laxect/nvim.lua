@@ -1,39 +1,38 @@
 local u = require('utils')
 
-local M = {
-  enabled = false,
-}
+local M = {}
 
 local state = {
+  enabled = false,
   is_active = false,
 }
 
+local fcitx5_cmd = 'fcitx5-remote'
 local function fcitx5()
-  M.enable = true
-  local cmd = 'fcitx5-remote'
+  state.enable = true
 
   local function is_active()
-    return u.capture(cmd) == '2'
+    return u.capture(fcitx5_cmd) == '2'
   end
 
   M.insert = function()
     if state.is_active then
-      os.execute(cmd .. ' -o')
+      os.execute(fcitx5_cmd .. ' -o')
     end
   end
 
   M.normal = function()
     state.is_active = is_active()
-    os.execute(cmd .. ' -c')
+    os.execute(fcitx5_cmd .. ' -c')
   end
 end
 
-if vim.fn.executable('fcitx5') == 1 then
+if vim.fn.executable(fcitx5_cmd) == 1 then
   fcitx5()
 end
 
-if M.enable then
-  u.au.group('IMAuto', function(aucmd)
+if state.enable then
+  u.au.group('AutoIM', function(aucmd)
     aucmd({ 'InsertEnter' }, function()
       require('auto_im').insert()
     end)
