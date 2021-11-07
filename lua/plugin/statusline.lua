@@ -4,10 +4,9 @@ M.config = function()
   local gl = require('galaxyline')
   local gls = gl.section
   local condition = require('galaxyline.condition')
+  local colors = require('galaxyline.themes.colors')['rose-pine']
 
   gl.short_line_list = { ' ' }
-
-  local colors = require('colors')
 
   -- reset section for reload
   gls.left = {}
@@ -21,19 +20,19 @@ M.config = function()
       provider = function()
         return '   '
       end,
-      highlight = { colors.white, colors.blue },
-      separator = ' ',
-      separator_highlight = { colors.blue, colors.black },
+      highlight = { colors.fg, colors.bg },
+      separator = '',
+      separator_highlight = { colors.bg, colors.fg },
     },
   })
 
   table.insert(gls.left, {
-    FileName = {
+    BufferName = {
       provider = { 'FileName' },
       condition = condition.buffer_not_empty,
-      highlight = { colors.white, colors.black },
+      highlight = { colors.bg, colors.fg },
       separator = ' ',
-      separator_highlight = { colors.black },
+      separator_highlight = { colors.fg },
     },
   })
 
@@ -45,9 +44,9 @@ M.config = function()
       condition = function()
         return not condition.buffer_not_empty()
       end,
-      highlight = { colors.white, colors.black },
+      highlight = { colors.bg, colors.fg },
       separator = ' ',
-      separator_highlight = { colors.black },
+      separator_highlight = { colors.fg },
     },
   })
 
@@ -57,7 +56,7 @@ M.config = function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
         return ' ' .. dir_name .. ' '
       end,
-      highlight = { colors.black },
+      highlight = { colors.fg },
     },
   })
 
@@ -142,9 +141,9 @@ M.config = function()
   table.insert(gls.right, {
     Sep = {
       provider = function()
-        return ' '
+        return ' '
       end,
-      highlight = { colors.white, colors.red },
+      highlight = { colors.red },
     },
   })
 
@@ -168,7 +167,7 @@ M.config = function()
           return '  ' .. current_Mode .. ' '
         end
       end,
-      highlight = { colors.white, colors.red },
+      highlight = { colors.bg, colors.red },
     },
   })
 
@@ -177,7 +176,7 @@ M.config = function()
       provider = function()
         return ''
       end,
-      highlight = { colors.red, colors.green },
+      highlight = { colors.red, colors.fg },
     },
   })
 
@@ -188,7 +187,7 @@ M.config = function()
         local col = vim.fn.col('.')
         return '  ' .. current_line .. ',' .. col .. ' '
       end,
-      highlight = { colors.white, colors.green },
+      highlight = { colors.bg, colors.fg },
     },
   })
 
@@ -197,9 +196,20 @@ M.config = function()
       FileName = {
         provider = { 'FileName' },
         condition = condition.buffer_not_empty,
-        highlight = { colors.white, colors.black },
+        highlight = { colors.fg, colors.bg },
       },
     },
   }
 end
+
+require('utils').au.group('StatusLine', {
+  {
+    'ColorScheme',
+    '*',
+    function()
+      require('plugin.statusline').config()
+    end,
+  },
+})
+
 return M

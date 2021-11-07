@@ -16,6 +16,11 @@ require('packer').startup({
     use('tpope/vim-surround')
 
     -- lines
+    use({
+      'nanozuki/tabby.nvim',
+      config = require('plugin.tabby').config,
+    })
+
     use('nvim-lua/plenary.nvim')
     use({
       'TimUntersberger/neogit',
@@ -33,11 +38,6 @@ require('packer').startup({
         },
         { 'nvim-lua/lsp-status.nvim' },
       },
-    })
-
-    use({
-      'nanozuki/tabby.nvim',
-      config = require('plugin.tabby').config,
     })
 
     use({
