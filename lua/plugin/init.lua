@@ -2,6 +2,12 @@ require('packer').startup({
   function(use)
     -- themes
     use('sainnhe/edge')
+    use({
+      'rose-pine/neovim',
+      config = function()
+        vim.g.rose_pine_variant = 'dawn'
+      end,
+    })
 
     -- which key
     use({ 'folke/which-key.nvim', config = require('plugin.which-key').config })
@@ -17,7 +23,7 @@ require('packer').startup({
       requires = { 'sindrets/diffview.nvim' },
     })
     use({
-      'glepnir/galaxyline.nvim',
+      'NTBBloodbath/galaxyline.nvim',
       config = require('plugin.statusline').config,
       requires = {
         {

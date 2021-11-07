@@ -33,7 +33,7 @@ M.config = function()
       condition = condition.buffer_not_empty,
       highlight = { colors.white, colors.black },
       separator = ' ',
-      separator_highlight = { colors.black, colors.white },
+      separator_highlight = { colors.black },
     },
   })
 
@@ -47,7 +47,7 @@ M.config = function()
       end,
       highlight = { colors.white, colors.black },
       separator = ' ',
-      separator_highlight = { colors.black, colors.white },
+      separator_highlight = { colors.black },
     },
   })
 
@@ -57,7 +57,7 @@ M.config = function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
         return ' ' .. dir_name .. ' '
       end,
-      highlight = { colors.black, colors.white },
+      highlight = { colors.black },
     },
   })
 
@@ -74,7 +74,7 @@ M.config = function()
       provider = 'DiffAdd',
       condition = checkwidth,
       icon = ' +',
-      highlight = { colors.green, colors.white },
+      highlight = { colors.green },
     },
   })
 
@@ -83,7 +83,7 @@ M.config = function()
       provider = 'DiffModified',
       condition = checkwidth,
       icon = '  *',
-      highlight = { colors.cyan, colors.white },
+      highlight = { colors.cyan },
     },
   })
 
@@ -92,7 +92,7 @@ M.config = function()
       provider = 'DiffRemove',
       condition = checkwidth,
       icon = ' -',
-      highlight = { colors.yellow, colors.white },
+      highlight = { colors.yellow },
     },
   })
 
@@ -103,7 +103,7 @@ M.config = function()
         return ft .. ' '
       end,
       condition = condition.buffer_not_empty,
-      highlight = { colors.red, colors.white },
+      highlight = { colors.red },
     },
   })
 
@@ -117,7 +117,7 @@ M.config = function()
           return ''
         end
       end,
-      highlight = { colors.black, colors.white },
+      highlight = { colors.black },
     },
   })
 
@@ -127,7 +127,7 @@ M.config = function()
         return ' '
       end,
       condition = condition.check_git_workspace,
-      highlight = { colors.red, colors.white },
+      highlight = { colors.red },
     },
   })
 
@@ -135,7 +135,7 @@ M.config = function()
     GitBranch = {
       provider = 'GitBranch',
       condition = condition.check_git_workspace,
-      highlight = { colors.black, colors.white },
+      highlight = { colors.black },
     },
   })
 
