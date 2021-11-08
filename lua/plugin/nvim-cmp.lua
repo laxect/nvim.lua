@@ -13,9 +13,9 @@ M.config = function()
       end,
     },
     mapping = {
-      ['<C-p>'] = cmp.mapping.select_prev_item(),
-      ['<C-n>'] = cmp.mapping.select_next_item(),
-      ['<C-y>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-p>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-n>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-y>'] = cmp.mapping(cmp.mapping.confirm(), { 'i', 'c' }),
       ['<C-e>'] = function(_)
         cmp.mapping.close()
         local copilot_keys = vim.fn['copilot#Accept']()
@@ -24,7 +24,7 @@ M.config = function()
         end
       end,
       -- smart tab
-      ['<Tab>'] = function(fallback)
+      ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
@@ -32,8 +32,11 @@ M.config = function()
         else
           fallback()
         end
-      end,
-      ['<S-Tab>'] = function(fallback)
+      end, {
+        'i',
+        'c',
+      }),
+      ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
@@ -41,15 +44,17 @@ M.config = function()
         else
           fallback()
         end
-      end,
+      end, {
+        'i',
+        'c',
+      }),
       ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
     },
     completion = { completeopt = 'menu,menuone,noinsert' },
     sources = { { name = 'luasnip' }, { name = 'nvim_lsp' }, { name = 'path' } },
   })
 
-  ---@diagnostic disable-next-line: undefined-field
-  require('cmp').setup.cmdline(':', {
+  cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
       { name = 'path' },
     }, {
@@ -57,7 +62,6 @@ M.config = function()
     }),
   })
 
-  ---@diagnostic disable-next-line: undefined-field
   cmp.setup.cmdline('/', {
     sources = {
       { name = 'buffer' },
