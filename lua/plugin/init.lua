@@ -1,7 +1,7 @@
 require('packer').startup({
   function(use)
     -- themes
-    use('sainnhe/edge')
+    use({ 'sainnhe/edge', config = require('plugin.edge').config })
     use({
       'rose-pine/neovim',
       config = function()

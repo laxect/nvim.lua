@@ -1,6 +1,16 @@
 local M = {}
 
+LocalColors = {}
+
+M.add_color = function(name, color)
+  LocalColors[name] = color
+end
+
 M.config = function()
+  for index, color in pairs(LocalColors) do
+    require('galaxyline.themes.colors')[index] = color
+  end
+
   local gl = require('galaxyline')
   local gls = gl.section
   local condition = require('galaxyline.condition')
