@@ -4,7 +4,7 @@ M.config = function()
   local gl = require('galaxyline')
   local gls = gl.section
   local condition = require('galaxyline.condition')
-  local colors = require('galaxyline.themes.colors')[vim.g.colors_name]
+  local colors = require('galaxyline.themes.colors').get_color
 
   gl.short_line_list = { ' ' }
 
@@ -20,9 +20,9 @@ M.config = function()
       provider = function()
         return '   '
       end,
-      highlight = { colors.fg, colors.bg },
+      highlight = { colors('fg'), colors('bg') },
       separator = '',
-      separator_highlight = { colors.bg, colors.fg },
+      separator_highlight = { colors('bg'), colors('fg') },
     },
   })
 
@@ -30,9 +30,9 @@ M.config = function()
     BufferName = {
       provider = { 'FileName' },
       condition = condition.buffer_not_empty,
-      highlight = { colors.bg, colors.fg },
+      highlight = { colors('bg'), colors('fg') },
       separator = ' ',
-      separator_highlight = { colors.fg },
+      separator_highlight = { colors('fg') },
     },
   })
 
@@ -44,9 +44,9 @@ M.config = function()
       condition = function()
         return not condition.buffer_not_empty()
       end,
-      highlight = { colors.bg, colors.fg },
+      highlight = { colors('bg'), colors('fg') },
       separator = ' ',
-      separator_highlight = { colors.fg },
+      separator_highlight = { colors('fg') },
     },
   })
 
@@ -72,7 +72,7 @@ M.config = function()
       provider = 'DiffAdd',
       condition = checkwidth,
       icon = ' +',
-      highlight = { colors.green },
+      highlight = { colors('green') },
     },
   })
 
@@ -81,7 +81,7 @@ M.config = function()
       provider = 'DiffModified',
       condition = checkwidth,
       icon = '  *',
-      highlight = { colors.cyan },
+      highlight = { colors('cyan') },
     },
   })
 
@@ -90,7 +90,7 @@ M.config = function()
       provider = 'DiffRemove',
       condition = checkwidth,
       icon = ' -',
-      highlight = { colors.yellow },
+      highlight = { colors('yellow') },
     },
   })
 
@@ -101,7 +101,7 @@ M.config = function()
         return ft .. ' '
       end,
       condition = condition.buffer_not_empty,
-      highlight = { colors.red },
+      highlight = { colors('red') },
     },
   })
 
@@ -115,7 +115,7 @@ M.config = function()
           return ''
         end
       end,
-      highlight = { colors.black },
+      highlight = { colors('black') },
     },
   })
 
@@ -125,7 +125,7 @@ M.config = function()
         return ' '
       end,
       condition = condition.check_git_workspace,
-      highlight = { colors.red },
+      highlight = { colors('red') },
     },
   })
 
@@ -141,7 +141,7 @@ M.config = function()
       provider = function()
         return ' '
       end,
-      highlight = { colors.red },
+      highlight = { colors('red') },
     },
   })
 
@@ -165,7 +165,7 @@ M.config = function()
           return '  ' .. current_Mode .. ' '
         end
       end,
-      highlight = { colors.bg, colors.red },
+      highlight = { colors('bg'), colors('red') },
     },
   })
 
@@ -174,7 +174,7 @@ M.config = function()
       provider = function()
         return ''
       end,
-      highlight = { colors.red, colors.fg },
+      highlight = { colors('red'), colors('fg') },
     },
   })
 
@@ -185,7 +185,7 @@ M.config = function()
         local col = vim.fn.col('.')
         return '  ' .. current_line .. ',' .. col .. ' '
       end,
-      highlight = { colors.bg, colors.fg },
+      highlight = { colors('bg'), colors('fg') },
     },
   })
 
@@ -194,7 +194,7 @@ M.config = function()
       FileName = {
         provider = { 'FileName' },
         condition = condition.buffer_not_empty,
-        highlight = { colors.fg, colors.bg },
+        highlight = { colors('fg'), colors('bg') },
       },
     },
   }
