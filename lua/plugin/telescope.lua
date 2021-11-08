@@ -31,7 +31,8 @@ function M.config()
     o = { '<cmd>Telescope find_files<cr>', 'Open Files' },
     s = { '<cmd>Telescope live_grep<cr>', 'Search Files' },
     b = { '<cmd>Telescope buffers<cr>', 'List Buffers' },
-    c = {
+    c = { '<cmd>Telescope colorscheme<cr>', 'List Buffers' },
+    z = {
       function()
         require('telescope').extensions.zoxide.list()
       end,
