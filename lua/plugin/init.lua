@@ -6,6 +6,7 @@ require('packer').startup({
       'rose-pine/neovim',
       config = function()
         vim.g.rose_pine_variant = 'dawn'
+        vim.cmd('highlight TabLineSel guifg=#f2e9de guibg=#575279')
       end,
     })
 
