@@ -49,9 +49,14 @@ M.config = function()
         'i',
         'c',
       }),
-      ['<CR>'] = cmp.mapping(
-        cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
-        { 'i', 'c' }
+      ['<CR>'] = cmp.mapping({
+        i = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+        c = function (fallback)
+          if cmp.visible() then
+            cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace})
+          end
+          fallback()
+        end}
       ),
     },
     completion = { completeopt = 'menu,menuone,noinsert' },
