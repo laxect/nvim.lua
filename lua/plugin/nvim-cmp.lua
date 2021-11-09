@@ -1,6 +1,7 @@
 local M = {}
 M.config = function()
   local luasnip = require('luasnip')
+  luasnip.config.setup({ history = false })
   local cmp = require('cmp')
   vim.g.copilot_no_tab_map = true
   vim.g.copilot_assume_mapped = true
@@ -48,7 +49,10 @@ M.config = function()
         'i',
         'c',
       }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+      ['<CR>'] = cmp.mapping(
+        cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+        { 'i', 'c' }
+      ),
     },
     completion = { completeopt = 'menu,menuone,noinsert' },
     sources = { { name = 'luasnip' }, { name = 'nvim_lsp' }, { name = 'path' } },
