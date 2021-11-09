@@ -62,7 +62,6 @@ require('packer').startup({
     -- nvim lsp
     use({
       'github/copilot.vim',
-      cmd = 'Copilot',
       config = function()
         vim.g.copilot_enable = true
       end,
