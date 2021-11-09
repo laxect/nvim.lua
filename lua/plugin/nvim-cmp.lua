@@ -19,9 +19,11 @@ M.config = function()
       ['<C-y>'] = cmp.mapping(cmp.mapping.confirm(), { 'i', 'c' }),
       ['<C-e>'] = function(_)
         cmp.mapping.close()
-        local copilot_keys = vim.fn['copilot#Accept']()
-        if copilot_keys ~= '' then
-          vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+        if vim.g.copilot_enable then
+          local copilot_keys = vim.fn['copilot#Accept']('')
+          if copilot_keys ~= '' then
+            vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+          end
         end
       end,
       -- smart tab
@@ -51,13 +53,13 @@ M.config = function()
       }),
       ['<CR>'] = cmp.mapping({
         i = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
-        c = function (fallback)
+        c = function(fallback)
           if cmp.visible() then
-            cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace})
+            cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })
           end
           fallback()
-        end}
-      ),
+        end,
+      }),
     },
     completion = { completeopt = 'menu,menuone,noinsert' },
     sources = { { name = 'luasnip' }, { name = 'nvim_lsp' }, { name = 'path' } },
