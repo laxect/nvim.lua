@@ -3,8 +3,8 @@ local utils = require('utils')
 local lsp_status = require('lsp-status')
 lsp_status.config({
   kind_labels = {},
-  current_function = true,
-  show_filename = true,
+  current_function = false,
+  show_filename = false,
   diagnostics = true,
   indicator_separator = ' ',
   component_separator = ' ',
