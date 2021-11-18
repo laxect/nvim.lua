@@ -66,9 +66,9 @@ lsp_common.on_attach = function(client, bufnr, no_lsp_format)
     ['<space>'] = {
       name = 'Lsp Utils',
       D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type Definition' },
-      r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename' },
       e = { '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', 'Line Diagnostics' },
-      a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'Code Action' },
+      r = { '<cmd>lua require"lspactions".rename()<CR>', 'Rename' },
+      a = { '<cmd>lua require"lspactions".code_action()<CR>', 'Code Action' },
     },
   }, opts)
   if no_lsp_format ~= true then

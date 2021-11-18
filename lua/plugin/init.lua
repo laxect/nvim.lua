@@ -76,12 +76,10 @@ require('packer').startup({
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/cmp-cmdline')
     use('windwp/nvim-autopairs')
-    use({
-      'RishabhRD/nvim-lsputils',
-      config = require('plugin.lsputils').config,
-      setup = require('plugin.lsputils').setup,
-      requires = { 'RishabhRD/popfix' },
-    })
+    use({ 'RishabhRD/lspactions', requires = {
+      'nvim-lua/popup.nvim',
+      'tjdevries/astronauta.nvim',
+    } })
     use('ray-x/lsp_signature.nvim')
     use({ 'folke/trouble.nvim', config = require('plugin.trouble').config })
     -- telescope
